@@ -3,12 +3,12 @@ import Movie from './Movie';
 import '../styles/MovieContainer.css'
 
 const MovieContainer = ({movies}) => {
-    // id, poster_path, backdrop_path, title, average_rating, release_date
     
     const movieCards = movies.map(movie => {
         return (
             <Movie 
                 id={movie.id}
+                key={movie.id}
                 poster_path={movie.poster_path}
                 backdrop_path={movie.backdrop_path}
                 title={movie.title}
@@ -18,7 +18,7 @@ const MovieContainer = ({movies}) => {
         )
     })
 
-    return(
+    return (
         <div>
             { movieCards }
         </div>
