@@ -6,7 +6,7 @@ const Movie = ({ id, poster_path, backdrop_path, title, average_rating, release_
         <div className='movie-card' id={id}>
             <img className='movie-poster-img' src={poster_path} alt={title + " movie poster"} />
             <h3>{title}</h3>
-            <p>{average_rating}</p>
+            <p>Rating: {Math.round(average_rating)} / 10</p>
         </div>
     )
 }
