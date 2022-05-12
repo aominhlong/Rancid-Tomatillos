@@ -1,0 +1,14 @@
+.movie-card {
+    height: 25rem;
+    width: 18rem;
+    border: red solid 0.2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.movie-poster-img {
+    height: 10rem;
+    width: 5rem;
+}

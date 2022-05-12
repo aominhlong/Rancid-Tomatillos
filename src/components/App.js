@@ -13,8 +13,8 @@ class App extends Component {
   }
   render() {
       return(
-        <main>
-          <MovieContainer className='movie-container' movies={this.state.movies} />
+        <main className='container'>
+          <MovieContainer movies={this.state.movies} />
         </main>
       )
   }

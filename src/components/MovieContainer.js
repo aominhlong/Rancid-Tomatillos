@@ -19,7 +19,7 @@ const MovieContainer = ({movies}) => {
     })
 
     return (
-        <div>
+        <div className='movie-container'>
             { movieCards }
         </div>
     )
