@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import MovieContainer from './MovieContainer';
 import MovieDetailsContainer from './MovieDetailsContainer';
 import movieData from '../movieData';
+import NavBar from './NavBar';
 import '../styles/App.css';
 
 class App extends Component {
@@ -20,9 +21,14 @@ class App extends Component {
     this.setState({ currentMovie: selectedMovie })
   }
 
+  goHome = () => {
+    this.setState({ currentMovie: {} })
+  }
+
   render() {
       return(
         <main className='container'>
+          <NavBar goHome={this.goHome}/>
           {!Object.keys(this.state.currentMovie).length && <MovieContainer movies={this.state.movies} loadMovieDetails={this.loadMovieDetails} />}
           {/* <MovieContainer movies={this.state.movies} loadMovieDetails={this.loadMovieDetails} /> */}
           {Object.keys(this.state.currentMovie).length && <MovieDetailsContainer movie={this.state.currentMovie} />}
