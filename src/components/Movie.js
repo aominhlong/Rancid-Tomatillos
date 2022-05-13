@@ -1,7 +1,7 @@
 import React from 'react';
 import '../styles/Movie.css'
 
-const Movie = ({ id, poster_path, backdrop_path, title, average_rating, release_date, loadMovieDetails }) => {
+const Movie = ({ id, poster_path, title, average_rating, loadMovieDetails }) => {
     
     return(
         <div onClick={ () => loadMovieDetails(id)} className='movie-card' id={id}>

@@ -14,12 +14,9 @@ class App extends Component {
   }
 
   loadMovieDetails = (id) => {
-    // console.log(Object.keys(this.state.currentMovie).length)
     const selectedMovie = this.state.movies.find( movie => {
-      // console.log('movie', movie)
       return movie.id === id
     })
-    console.log('selectedMove: ', selectedMovie)
     this.setState({ currentMovie: selectedMovie })
   }
 
@@ -27,6 +24,7 @@ class App extends Component {
       return(
         <main className='container'>
           {!Object.keys(this.state.currentMovie).length && <MovieContainer movies={this.state.movies} loadMovieDetails={this.loadMovieDetails} />}
+          {/* <MovieContainer movies={this.state.movies} loadMovieDetails={this.loadMovieDetails} /> */}
           {Object.keys(this.state.currentMovie).length && <MovieDetailsContainer movie={this.state.currentMovie} />}
         </main>
       )
