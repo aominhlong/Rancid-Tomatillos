@@ -1,18 +1,12 @@
 import '../styles/MovieDetailsContainer.css';
 import React, {Component} from 'react';
 
-class MovieDetailsContainer extends Component {
-  constructor() {
-      super()
-      this.state = {}
-  }
-  render() {
-      return(
-        <div>
-
-        </div>
-      )
-  }
+const MovieDetailsContainer = ({ id, poster_path, backdrop_path, title, average_rating, release_date }) => {
+  return (
+    <div>
+      
+    </div>
+  )
 }
 
 export default MovieDetailsContainer;
