@@ -16,16 +16,12 @@ class App extends Component {
   }
 
   componentDidMount = () => {
-    // fetch('https://rancid-tomatillos.herokuapp.com/api/v2/mo')
-    fetch('https://httpstat.us/500')
+    // fetch('https://httpstat.us/500')
+    fetch('https://rancid-tomatillos.herokuapp.com/api/v2/movies')
     .then(response => {
-      // console.log(response);
-      // if(response.status >= 400) {
-      //   console.log('HTTP request unsuccessful 400');
-      // }
       if(!response.ok) {
         console.log('HTTP request unsuccessful');
-        console.log('Error: ', response.status);
+        this.setState({error: `Network Error - status ${response.status} at URL: ${response.url}`});
         throw new Error(`status ${response.status} at URL: ${response.url}`)
       } else {
         console.log('HTTP request successful');
@@ -53,6 +49,7 @@ class App extends Component {
       return(
         <main className='container'>
           <NavBar goHome={this.goHome}/>
+          <h1>{this.state.error}</h1>
           {(!Object.keys(this.state.currentMovie).length && Object.keys(this.state.movies).length) && <MovieContainer movies={this.state.movies} loadMovieDetails={this.loadMovieDetails} />}
           {/* <MovieContainer movies={this.state.movies} loadMovieDetails={this.loadMovieDetails} /> */}
           {Object.keys(this.state.currentMovie).length && <MovieDetailsContainer movie={this.state.currentMovie} />}
