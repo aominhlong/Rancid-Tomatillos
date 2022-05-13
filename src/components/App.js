@@ -11,10 +11,15 @@ class App extends Component {
         movies: movieData.movies
       }
   }
+
+  loadMovieDetails = (title) => {
+    console.log(title)
+  }
+
   render() {
       return(
         <main className='container'>
-          <MovieContainer movies={this.state.movies} />
+          <MovieContainer movies={this.state.movies} loadMovieDetails={this.loadMovieDetails} />
         </main>
       )
   }
