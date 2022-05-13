@@ -9,9 +9,16 @@ class App extends Component {
   constructor() {
       super()
       this.state = {
-        movies: movieData.movies,
+        movies: {},
         currentMovie: {}
       }
+  }
+
+  componentDidMount = () => {
+    fetch('https://rancid-tomatillos.herokuapp.com/api/v2/movies')
+    .then(response => response.json())
+    .then(movies => this.setState({ movies: movies }))
+    .catch(err => console.log('Error: ', err));
   }
 
   loadMovieDetails = (id) => {
@@ -29,7 +36,7 @@ class App extends Component {
       return(
         <main className='container'>
           <NavBar goHome={this.goHome}/>
-          {!Object.keys(this.state.currentMovie).length && <MovieContainer movies={this.state.movies} loadMovieDetails={this.loadMovieDetails} />}
+          {(!Object.keys(this.state.currentMovie).length && Object.keys(this.state.movies).length) && <MovieContainer movies={this.state.movies} loadMovieDetails={this.loadMovieDetails} />}
           {/* <MovieContainer movies={this.state.movies} loadMovieDetails={this.loadMovieDetails} /> */}
           {Object.keys(this.state.currentMovie).length && <MovieDetailsContainer movie={this.state.currentMovie} />}
         </main>

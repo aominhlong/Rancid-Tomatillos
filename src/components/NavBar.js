@@ -2,7 +2,6 @@ import React from 'react';
 import '../styles/NavBar.css'
 
 const NavBar = ({goHome}) => {
-    console.log('navBar prop', goHome)
     return(
         <div>
             <h1>Rancid Tamatillos</h1>
