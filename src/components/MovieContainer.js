@@ -2,7 +2,7 @@ import React from 'react';
 import Movie from './Movie';
 import '../styles/MovieContainer.css'
 
-const MovieContainer = ({movies}) => {
+const MovieContainer = ({movies, loadMovieDetails}) => {
     
     const movieCards = movies.map(movie => {
         return (
@@ -14,6 +14,7 @@ const MovieContainer = ({movies}) => {
                 title={movie.title}
                 average_rating={movie.average_rating}
                 release_date={movie.release_date}
+                loadMovieDetails={loadMovieDetails}
             />
         )
     })

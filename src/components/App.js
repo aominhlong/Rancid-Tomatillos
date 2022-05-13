@@ -8,13 +8,24 @@ class App extends Component {
   constructor() {
       super()
       this.state = {
-        movies: movieData.movies
+        movies: movieData.movies,
+        currentMovie: {}
       }
   }
+
+  loadMovieDetails = (id) => {
+    const selectedMovie = this.state.movies.find( movie => {
+      return movie.id === id
+    })
+    this.setState({ currentMovie: selectedMovie })
+  }
+
   render() {
       return(
         <main className='container'>
-          <MovieContainer movies={this.state.movies} />
+          {!Object.keys(this.state.currentMovie).length && <MovieContainer movies={this.state.movies} loadMovieDetails={this.loadMovieDetails} />}
+          {/* <MovieContainer movies={this.state.movies} loadMovieDetails={this.loadMovieDetails} /> */}
+          {Object.keys(this.state.currentMovie).length && <MovieDetailsContainer movie={this.state.currentMovie} />}
         </main>
       )
   }
