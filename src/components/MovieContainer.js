@@ -3,8 +3,7 @@ import Movie from './Movie';
 import '../styles/MovieContainer.css'
 
 const MovieContainer = ({movies, loadMovieDetails}) => {
-    
-    const movieCards = movies.map(movie => {
+    const movieCards = movies.movies.map(movie => {
         return (
             <Movie 
                 id={movie.id}

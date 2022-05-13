@@ -9,13 +9,33 @@ class App extends Component {
   constructor() {
       super()
       this.state = {
-        movies: movieData.movies,
-        currentMovie: {}
+        movies: {},
+        currentMovie: {},
+        error: ''
       }
   }
 
+  componentDidMount = () => {
+    // fetch('https://httpstat.us/500')
+    fetch('https://rancid-tomatillos.herokuapp.com/api/v2/movies')
+    .then(response => {
+      if(!response.ok) {
+        console.log('HTTP request unsuccessful');
+        this.setState({error: `Network Error - status ${response.status} at URL: ${response.url}`});
+        throw new Error(`status ${response.status} at URL: ${response.url}`)
+      } else {
+        console.log('HTTP request successful');
+      }
+      
+      return response;
+    })
+    .then(response => response.json())
+    .then(movies => this.setState({ movies: movies }))
+    .catch(err => console.log(err));
+  }
+
   loadMovieDetails = (id) => {
-    const selectedMovie = this.state.movies.find( movie => {
+    const selectedMovie = this.state.movies.movies.find( movie => {
       return movie.id === id
     })
     this.setState({ currentMovie: selectedMovie })
@@ -29,7 +49,8 @@ class App extends Component {
       return(
         <main className='container'>
           <NavBar goHome={this.goHome}/>
-          {!Object.keys(this.state.currentMovie).length && <MovieContainer movies={this.state.movies} loadMovieDetails={this.loadMovieDetails} />}
+          <h1>{this.state.error}</h1>
+          {(!Object.keys(this.state.currentMovie).length && Object.keys(this.state.movies).length) && <MovieContainer movies={this.state.movies} loadMovieDetails={this.loadMovieDetails} />}
           {/* <MovieContainer movies={this.state.movies} loadMovieDetails={this.loadMovieDetails} /> */}
           {Object.keys(this.state.currentMovie).length && <MovieDetailsContainer movie={this.state.currentMovie} />}
         </main>
