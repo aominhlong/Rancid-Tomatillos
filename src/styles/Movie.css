@@ -1,12 +1,45 @@
 .movie-card {
     height: 25rem;
     width: 18rem;
-    border: red solid 0.2rem;
+    /* border: red solid 0.2rem; */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    background-color: transparent;
+    color: white;
+    cursor: pointer;
+    position: relative;
+
 }
+
+.movie-card:hover {
+    background-color:white;
+    color: black;
+    transition: 0.5s ease; 
+    transform: scale(1.05);
+}
+
+.movie-card::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 5rem;
+    margin-top: 22rem;
+    background: transparent;
+    height: 25%; /* 30? */
+    width: 100%;
+    transform: perspective(5rem) rotateX(35deg) scale(1.2,0.35);
+    filter: blur(8px);
+    transition: 1s ease;
+}
+
+.movie-card:hover::before{
+    background: white;
+    top: 1rem;
+}
+
 
 .movie-poster-img {
     height: 70%;

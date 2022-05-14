@@ -1,0 +1,15 @@
+.nav-bar-container {
+    border: 2px solid green;
+    color: white;
+    height: 8rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    background: white;
+}
+
+.nav-bar-container > h1 {
+    font-family: ;
+    color: rgb(203, 93, 49);
+    text-shadow:rgb(164,185,0)
+}
