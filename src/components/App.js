@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import MovieContainer from './MovieContainer';
 import MovieDetailsContainer from './MovieDetailsContainer';
-import movieData from '../movieData';
+// import movieData from '../movieData';
 import NavBar from './NavBar';
 import '../styles/App.css';
 

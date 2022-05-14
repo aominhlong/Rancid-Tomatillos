@@ -1,11 +1,13 @@
 import '../styles/MovieDetailsContainer.css';
 import React, {Component} from 'react';
+import MovieDetails from './MovieDetails';
 
 class MovieDetailsContainer extends Component {
   constructor() {
     super()
     this.state = {
-      currentMovieDetails: {}
+      currentMovieDetails: {},
+      error: ''
     }
   }
 
