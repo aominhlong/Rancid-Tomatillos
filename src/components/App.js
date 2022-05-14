@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import MovieContainer from './MovieContainer';
 import MovieDetailsContainer from './MovieDetailsContainer';
-import movieData from '../movieData';
+// import movieData from '../movieData';
 import NavBar from './NavBar';
 import '../styles/App.css';
 
@@ -26,7 +26,6 @@ class App extends Component {
       } else {
         console.log('HTTP request successful');
       }
-      
       return response;
     })
     .then(response => response.json())
@@ -35,7 +34,7 @@ class App extends Component {
   }
 
   loadMovieDetails = (id) => {
-    const selectedMovie = this.state.movies.movies.find( movie => {
+    const selectedMovie = this.state.movies.movies.find(movie => {
       return movie.id === id
     })
     this.setState({ currentMovie: selectedMovie })
@@ -52,7 +51,7 @@ class App extends Component {
           <h1>{this.state.error}</h1>
           {(!Object.keys(this.state.currentMovie).length && Object.keys(this.state.movies).length) && <MovieContainer movies={this.state.movies} loadMovieDetails={this.loadMovieDetails} />}
           {/* <MovieContainer movies={this.state.movies} loadMovieDetails={this.loadMovieDetails} /> */}
-          {Object.keys(this.state.currentMovie).length && <MovieDetailsContainer movie={this.state.currentMovie} />}
+          {Object.keys(this.state.currentMovie).length && <MovieDetailsContainer movieId={this.state.currentMovie.id} />}
         </main>
       )
   }
