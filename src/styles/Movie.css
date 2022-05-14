@@ -18,7 +18,7 @@
     background-color:white;
     color: black;
     transition: 0.5s ease; 
-    transform: scale(1.05);
+    transform: scale(1.1);
 }
 
 .movie-card::before {
@@ -26,12 +26,12 @@
     position: absolute;
     left: 0;
     top: 5rem;
-    margin-top: 22rem;
+    margin-top: 23.5rem;
     background: transparent;
-    height: 25%; /* 30? */
+    height: 10%; /* 30? */
     width: 100%;
     transform: perspective(5rem) rotateX(35deg) scale(1.2,0.35);
-    filter: blur(8px);
+    filter: blur(16px);
     transition: 1s ease;
 }
 
@@ -42,6 +42,6 @@
 
 
 .movie-poster-img {
-    height: 70%;
-    width: 70%;
+    height: 100%;
+    width: 100%;
 }
