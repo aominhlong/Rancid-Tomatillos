@@ -27,28 +27,13 @@ class MovieDetailsContainer extends Component {
     .catch(err => console.log(err));
   }
 
-
   render() {
     return (
       <div className='movie-container'>
-        {Object.keys(this.state.currentMovieDetails).length && console.log("NOT EMPTY!")}
+        {Object.keys(this.state.currentMovieDetails).length && <MovieDetails movieDetails={this.state.currentMovieDetails} />}
       </div>
     )
   }
 }
-// The issue is that we're not rendering the movie details in full
-
-
-
-// const MovieDetailsContainer = (prop) => {
-//   const { id, poster_path, backdrop_path, title, average_rating, release_date } = prop.movie
-//   return (
-//     <div className='movie-details'>
-//       <img className='movie-poster-img' src={poster_path} alt={title + " movie poster"} />
-//             <h3>{title}</h3>
-//             <p>Rating: {Math.round(average_rating)} / 10</p>
-//     </div>
-//   )
-// }
 
 export default MovieDetailsContainer;
