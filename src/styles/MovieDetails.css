@@ -1,0 +1,54 @@
+.showcase {
+    width: 100%;
+    height: 93vh;
+    position: absolute;
+}
+
+.showcase-content {
+    border: 1px solid red;
+    background: 'no-repeat';
+    background-size: cover;
+    background-position: center center;
+    max-width: 110rem;
+    height: 50rem;
+    position: relative;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+}
+
+.btn {
+    display: inline-block;
+    background: rgb(30, 8, 48);
+    color: white;
+    padding: 0.7rem 2.2rem;
+    font-size: 2rem;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    box-shadow: 0 0.1rem 0 rgba(0,0,0, 0.45);
+    border-radius: 2px;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+.btn-rounded {
+    border-radius: 0.5rem;
+}
+
+.btn-large {
+    font-size: 2rem;
+    padding: 1.5rem 2.1rem;
+    text-transform: uppercase;
+    width: 30rem;
+
+    background-image: url('../assests/play-button.png');
+    background: 'no-repeat';
+    background-size: cover;
+    background-position: center center;
+}

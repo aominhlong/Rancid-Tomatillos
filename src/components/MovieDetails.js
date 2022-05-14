@@ -6,9 +6,17 @@ const MovieDetails = (props) => {
             overview, average_rating, genres, budget, revenue, 
             runtime, tagline} = props.movieDetails.movie;
     return(
-        <div>
-            <img src={backdrop_path} />
-        </div>
+        <>
+            <header className="showcase">
+                <section className="showcase-content" style={{backgroundImage: `url(${backdrop_path})`}}>
+                    <h1>{title}</h1>
+                    <p>{tagline}</p>
+                    <button className="btn btn-rounded btn-large">Play Preview</button>
+                </section>
+                <section className="details">
+                </section>
+            </header>
+        </>
     )
 }
 
