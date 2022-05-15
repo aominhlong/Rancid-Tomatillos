@@ -1,5 +1,7 @@
 :root {
   font-size: 62.5%;
+  --purple: #281722;
+  --secondary-color: ;
 }
 
 * {
@@ -10,7 +12,7 @@
 
 body {
   font-family: 'Arial', sans-serif;
-  background: #333;
+  background: radial-gradient(var(--purple), #000000);
   color: #999;
 }
 
