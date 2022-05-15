@@ -9,7 +9,6 @@
 }
 
 .showcase-content {
-    /* border: 1px solid red; */
     background: 'no-repeat';
     background-size: cover;
     background-position: center center;
@@ -69,7 +68,6 @@
 }
 
 .details-content {
-    border: 2px solid teal;
     max-width: 110rem;
     /* height: 50rem; */
     position: relative;

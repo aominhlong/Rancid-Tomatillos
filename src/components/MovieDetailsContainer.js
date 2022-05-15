@@ -12,7 +12,6 @@ class MovieDetailsContainer extends Component {
   }
 
   componentDidMount = () => {
-    console.log(this.props.movieId);
     fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${this.props.movieId}`)
     .then(response => {
       if(!response.ok) {
