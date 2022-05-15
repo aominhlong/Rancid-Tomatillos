@@ -35,14 +35,12 @@ class App extends Component {
   }
 
   loadMovieDetails = (id) => {
-    const selectedMovie = this.state.movies.movies.find(movie => {
-      return movie.id === id
-    })
-    this.setState({ currentMovie: selectedMovie })
+    const selectedMovie = this.state.movies.movies.find(movie => movie.id === id);
+    this.setState({ currentMovie: selectedMovie });
   }
 
   goHome = () => {
-    this.setState({ currentMovie: {} })
+    this.setState({ currentMovie: {}, searchedMovies: {}, error: '' });
   }
 
   handleChange = (event) => {
@@ -60,16 +58,16 @@ class App extends Component {
           {(!Object.keys(this.state.currentMovie).length 
             && Object.keys(this.state.movies).length 
             && !Object.keys(this.state.searchedMovies).length)
-            && <MovieContainer movies={this.state.movies} loadMovieDetails={this.loadMovieDetails} /> 
+            && <MovieContainer movies={this.state.movies} loadMovieDetails={ this.loadMovieDetails } /> 
           }
 
           {/* Load search results instead */}
           {(!Object.keys(this.state.currentMovie).length && Object.keys(this.state.searchedMovies).length) 
-            && <MovieContainer movies={this.state.searchedMovies} loadMovieDetails={this.loadMovieDetails} /> 
+            && <MovieContainer movies={this.state.searchedMovies} loadMovieDetails={ this.loadMovieDetails } /> 
           }
           
           {/* Page load on user clicking on a poster */}
-          {Object.keys(this.state.currentMovie).length && <MovieDetailsContainer movieId={this.state.currentMovie.id} />}
+          {Object.keys(this.state.currentMovie).length && <MovieDetailsContainer movieId={ this.state.currentMovie.id } />}
         </main>
       )
   }
