@@ -62,12 +62,39 @@
     height: 9rem;
     border-radius: 100%;
     background-image: url('../assests/play-button-solid.png');
-    /* background: 'no-repeat'; */
+    background: 'no-repeat';
     background-size: cover;
     background-position: center center;
     margin: 3rem 5rem;
 }
 
-.details {
-    background-color: white;
+.details-content {
+    border: 2px solid teal;
+    max-width: 110rem;
+    /* height: 50rem; */
+    position: relative;
+    margin: auto;
+    background-color: rgb(243, 243, 243);
+    display: flex;
+}
+
+.movie-poster {
+    margin: 3rem 2rem 5rem 3rem;
+    padding: 0.2rem;
+    border: 1rem solid #4b4c4e;
+    width: 25rem;
+}
+
+.details-list {
+    color: #333;
+    margin-top: 3rem;
+    font-size: 2rem;
+}
+
+.details-list > li {
+    margin-top: 1rem;
+}
+
+.description-header {
+    font-size: 3rem;
 }

@@ -18,15 +18,17 @@ const MovieDetails = (props) => {
                         </div>
                     </section>
                 </div>
-                <section className="details">
+                <section className="details-content">
+                    <img className="movie-poster" src={poster_path} alt={`${title} movie poster`} />
                     <article>
-                        <ul>
-                            <li>{`${title} | ${release_date}`}</li>
-                            <li>{release_date}</li>
-                            <li>{average_rating}</li>
-                            <li>{}</li>
-                            <li>{overview}</li>
-                            <li>{overview}</li>
+                        <ul className="details-list">
+                            <li className="description-header">{`${title} (${release_date.substring(0,4)})`}</li>
+                            <li>{`Average Rating: ${Math.round(average_rating)}/10`}</li>
+                            <li>{`Release Date: ${release_date.replaceAll("-", "/")}`}</li>
+                            <li>{`Runtime: ${runtime} minutes`}</li>
+                            <li>{`Genre: ${genres}`}</li>
+                            <li>{`Budget: $${budget.toFixed(2)}`}</li>
+                            <li>{`Revenue: $${revenue.toFixed(2)}`}</li>
                         </ul>
                     </article>
                 </section>
