@@ -6,7 +6,7 @@ const NavBar = ({ goHome, handleChange }) => {
         <nav className="main-navbar" aria-label="Main">
             <div className="container flex" aria-description="Navigation container with site name and navigation options">
                 <h1 className="site-title">Rotten Tamatillos</h1>
-                <nav>
+                <nav className="nav-selection">
                     <ul>
                         <li aria-setsize="3" aria-posinset="1"><button className="main-link" id="navHomeBtn">Home</button></li>
                         <li aria-setsize="3" aria-posinset="2"><button className="main-link" id="navDashboardBtn">Dashboard</button></li>
