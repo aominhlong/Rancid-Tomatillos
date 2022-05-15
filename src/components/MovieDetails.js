@@ -8,12 +8,27 @@ const MovieDetails = (props) => {
     return(
         <>
             <header className="showcase">
-                <section className="showcase-content" style={{backgroundImage: `url(${backdrop_path})`}}>
-                    <h1>{title}</h1>
-                    <p>{tagline}</p>
-                    <button className="btn btn-rounded btn-large">Play Preview</button>
-                </section>
+                <div className="backdrop">
+                    <section className="showcase-content" style={{backgroundImage: `url(${backdrop_path})`}}>
+                        <div className="showcase-fade">
+                            <h1>{title}</h1>
+                            <p>{tagline}</p>
+                            <p>{overview}</p>
+                            <button className="btn btn-play"></button>
+                        </div>
+                    </section>
+                </div>
                 <section className="details">
+                    <article>
+                        <ul>
+                            <li>{`${title} | ${release_date}`}</li>
+                            <li>{release_date}</li>
+                            <li>{average_rating}</li>
+                            <li>{}</li>
+                            <li>{overview}</li>
+                            <li>{overview}</li>
+                        </ul>
+                    </article>
                 </section>
             </header>
         </>

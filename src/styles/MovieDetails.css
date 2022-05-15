@@ -4,8 +4,12 @@
     position: absolute;
 }
 
+.backdrop {
+    background-color: rgb(0, 0, 0);
+}
+
 .showcase-content {
-    border: 1px solid red;
+    /* border: 1px solid red; */
     background: 'no-repeat';
     background-size: cover;
     background-position: center center;
@@ -16,12 +20,24 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+}
 
+.showcase-fade {
+    background-color: rgba(0,0,0, 0.69);
+}
+
+.showcase-fade > h1 {
+    font-size: 4rem;
+    margin: 1rem 0 0 3rem;
+}
+
+.showcase-fade > p {
+    font-size: 2rem;
+    margin: 1rem 0 0 3rem;
 }
 
 .btn {
     display: inline-block;
-    background: rgb(30, 8, 48);
     color: white;
     padding: 0.7rem 2.2rem;
     font-size: 2rem;
@@ -37,18 +53,21 @@
     opacity: 0.9;
 }
 
-.btn-rounded {
-    border-radius: 0.5rem;
-}
-
-.btn-large {
+.btn-play {
     font-size: 2rem;
     padding: 1.5rem 2.1rem;
     text-transform: uppercase;
-    width: 30rem;
-
-    background-image: url('../assests/play-button.png');
-    background: 'no-repeat';
+    opacity: 0.7;
+    width: 9rem;
+    height: 9rem;
+    border-radius: 100%;
+    background-image: url('../assests/play-button-solid.png');
+    /* background: 'no-repeat'; */
     background-size: cover;
     background-position: center center;
+    margin: 3rem 5rem;
+}
+
+.details {
+    background-color: white;
 }
