@@ -1,7 +1,7 @@
 import React from 'react';
 import '../styles/NavBar.css'
 
-const NavBar = ({goHome}) => {
+const NavBar = ({goHome, handleChange}) => {
     return(
         <div className='nav-bar-container'>
             <div className='title-img'>
@@ -19,7 +19,7 @@ const NavBar = ({goHome}) => {
                         <a href='#'>Comedy</a>
                     </div>
                 </div>
-                <input type="text" placeholder="find a movie"></input>
+                <input type='text' placeholder='Search' onChange={event => handleChange(event)}></input>
             </form>
         </div>
     )

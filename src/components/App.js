@@ -10,6 +10,7 @@ class App extends Component {
       super()
       this.state = {
         movies: {},
+        searchedMovies: {},
         currentMovie: {},
         error: ''
       }
@@ -44,13 +45,30 @@ class App extends Component {
     this.setState({ currentMovie: {} })
   }
 
+  handleChange = (event) => {
+    const filteredMovies = this.state.movies.movies.filter(movie => movie.title.includes(event.target.value));
+    this.setState({ searchedMovies: {movies: filteredMovies} });
+  }
+
   render() {
       return(
         <main className='container'>
-          <NavBar goHome={this.goHome}/>
+          <NavBar goHome={this.goHome} handleChange={ this.handleChange }/>
           <h1>{this.state.error}</h1>
-          {(!Object.keys(this.state.currentMovie).length && Object.keys(this.state.movies).length) && <MovieContainer movies={this.state.movies} loadMovieDetails={this.loadMovieDetails} />}
-          {/* <MovieContainer movies={this.state.movies} loadMovieDetails={this.loadMovieDetails} /> */}
+
+          {/* If there is no search, then load all movies */}
+          {(!Object.keys(this.state.currentMovie).length 
+            && Object.keys(this.state.movies).length 
+            && !Object.keys(this.state.searchedMovies).length)
+            && <MovieContainer movies={this.state.movies} loadMovieDetails={this.loadMovieDetails} /> 
+          }
+
+          {/* Load search results instead */}
+          {(!Object.keys(this.state.currentMovie).length && Object.keys(this.state.searchedMovies).length) 
+            && <MovieContainer movies={this.state.searchedMovies} loadMovieDetails={this.loadMovieDetails} /> 
+          }
+          
+          {/* Page load on user clicking on a poster */}
           {Object.keys(this.state.currentMovie).length && <MovieDetailsContainer movieId={this.state.currentMovie.id} />}
         </main>
       )

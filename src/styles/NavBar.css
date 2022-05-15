@@ -38,7 +38,16 @@ img {
     width: 15%;
 }
 
-
+input[type="text"] {
+    color: gray;
+    background-image: url('https://www.pinclipart.com/picdir/big/15-153148_search-magnifying-glass-icon-black-search-icon-png.png');
+    background-size: 8%;
+    background-repeat: no-repeat;
+    background-position: right;
+    margin-right: 1rem;
+    padding-right: 2rem;
+    border-color: rgb(203, 202, 202);
+}
 
 .home {
     cursor: pointer;
