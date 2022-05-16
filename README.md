@@ -3,7 +3,8 @@
  
 
 #### Full Demo
-- ![full_demo](https://user-images.githubusercontent.com/97044701/168508159-faf3a730-cdd0-4fe6-856f-2fc09666d2d4.gif)
+
+![full_demo](https://user-images.githubusercontent.com/97044701/168508159-faf3a730-cdd0-4fe6-856f-2fc09666d2d4.gif)
 
 
 #### Deployable
