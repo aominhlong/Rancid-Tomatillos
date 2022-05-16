@@ -30,7 +30,7 @@ class MovieDetailsContainer extends Component {
 
   render() {
     return (
-      <div className='movie-container'>
+      <div className='movie-details-container'>
         {Object.keys(this.state.currentMovieDetails).length && <MovieDetails movieDetails={this.state.currentMovieDetails} />}
       </div>
     )

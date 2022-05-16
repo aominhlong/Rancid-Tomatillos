@@ -1,8 +1,9 @@
 :root {
   font-size: 62.5%;
+  --purple: #362143;
+  --light-purple: #412750;
+  --dark-purple: #281722;
 }
-
-
 
 * {
   box-sizing: border-box;
@@ -10,14 +11,25 @@
   margin: 0;
 } 
 
-.container {
-  background: rgb(49,39,47)
+body {
+  font-family: 'Montserrat Alternates', 'Montserrat', sans-serif;
+  background: radial-gradient(var(--dark-purple), #000000);
+  color: #999;
 }
 
-/* .container {
-  max-width: 1100px;
-  margin: 0 auto;
-  overflow: auto;
-  padding: 0 40px;
-} */
+ul {
+  list-style: none;
+}
+
+h1, h2, h3, h4 {
+  color: #fff;
+}
+
+p {
+  margin: 1rem 0;
+}
+
+img {
+  width: 100%;
+}
 
