@@ -7,6 +7,7 @@ class MovieDetailsContainer extends Component {
     super()
     this.state = {
       currentMovieDetails: {},
+      currentMovieVideo: {},
       error: ''
     }
   }

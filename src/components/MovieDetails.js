@@ -14,7 +14,7 @@ const MovieDetails = (props) => {
                             <h1>{title}</h1>
                             <p>{tagline}</p>
                             <p>{overview}</p>
-                            <button className="btn btn-play"></button>
+                            <button className="btn btn-play" onClick={() => {console.log(title)}}></button>
                         </div>
                     </section>
                 </div>
