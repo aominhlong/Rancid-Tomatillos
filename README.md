@@ -6,10 +6,6 @@
 
 ![full_demo](https://user-images.githubusercontent.com/97044701/168508159-faf3a730-cdd0-4fe6-856f-2fc09666d2d4.gif)
 
-
-#### Deployable
-**Paste deployable here**
-
 #### Getting Started
 1. Clone the repo from [github](https://github.com/aominhlong/Rancid-Tomatillos)
 
@@ -23,7 +19,6 @@
 4. Copy the local host address from your terminal and add to your web browser to see the web app
 
 ### Table of Contents
-- [Deployable](#deployable)
 - [About the Project](#about-the-project)
 - [Contributors](#contributors)
 - [Technologies Used](#technologies-used)
