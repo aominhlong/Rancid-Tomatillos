@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Rancid-Tomatillos/static/css/main.d7400742.css",
+    "main.js": "/Rancid-Tomatillos/static/js/main.0bfb2e2b.js",
+    "index.html": "/Rancid-Tomatillos/index.html",
+    "main.d7400742.css.map": "/Rancid-Tomatillos/static/css/main.d7400742.css.map",
+    "main.0bfb2e2b.js.map": "/Rancid-Tomatillos/static/js/main.0bfb2e2b.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d7400742.css",
+    "static/js/main.0bfb2e2b.js"
+  ]
+}
