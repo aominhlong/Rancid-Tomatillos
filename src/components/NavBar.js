@@ -15,10 +15,10 @@ const NavBar = ({ goHome, handleChange }) => {
                     <div className='dropdown'>
                         <button className='nav-btn categories-btn'>GENRE</button>
                         <div className='dropdown-content'>
-                            <a href='#'>Action</a>
-                            <a href='#'>Adventure</a>
-                            <a href='#'>Horror</a>
-                            <a href='#'>Comedy</a>
+                            <a href='#'>ACTION</a>
+                            <a href='#'>ADVENTURE</a>
+                            <a href='#'>HORROR</a>
+                            <a href='#'>COMEDY</a>
                         </div>
                     </div>
                 </li>
@@ -33,31 +33,3 @@ const NavBar = ({ goHome, handleChange }) => {
 }
 
 export default NavBar;
-
-
-
-
-
-
-// const NavBar = ({goHome, handleChange}) => {
-//     return(
-//         <div className='nav-bar-container'>
-//             <div className='title-img'>
-//                 <h1>Rancid Tamatillos</h1>
-//             </div>
-//             <form className='button-input-container'>
-//                 <button className='home' onClick={() => goHome()}>Home</button>
-                // <div className='dropdown'>
-                //     <button className='categories'>Categories</button>
-                //     <div className='dropdown-content'>
-                //         <a href='#'>Action</a>
-                //         <a href='#'>Adventure</a>
-                //         <a href='#'>Horror</a>
-                //         <a href='#'>Comedy</a>
-                //     </div>
-                // </div>
-//                 <input type='text' placeholder='Search' onChange={event => handleChange(event)}></input>
-//             </form>
-//         </div>
-//     )
-// }
