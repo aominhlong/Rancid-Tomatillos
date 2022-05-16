@@ -1,7 +1,8 @@
 :root {
   font-size: 62.5%;
-  --purple: #281722;
-  --secondary-color: ;
+  --purple: #362143;
+  --light-purple: #412750;
+  --dark-purple: #281722;
 }
 
 * {
@@ -11,8 +12,8 @@
 } 
 
 body {
-  font-family: 'Arial', sans-serif;
-  background: radial-gradient(var(--purple), #000000);
+  font-family: 'Montserrat Alternates', 'Montserrat', sans-serif;
+  background: radial-gradient(var(--dark-purple), #000000);
   color: #999;
 }
 

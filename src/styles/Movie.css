@@ -34,7 +34,7 @@
 }
 
 .movie-card:hover::before{
-    background: rgb(201, 179, 223);
+    background: rgb(228, 226, 226);
     top: 12rem;
 }
 

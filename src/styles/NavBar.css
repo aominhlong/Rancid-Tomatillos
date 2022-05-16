@@ -1,6 +1,6 @@
-.main-navbar {
-    background: #333;
-    box-shadow: 0 0.5rem 3rem rgb(66, 66, 66);
+.nav-selection {
+    background: var(--purple);
+    box-shadow: 0 0.5rem 3rem var(--light-purple);
     padding: 2rem 0;
     border-radius: 0.2rem;
     display: flex;
@@ -8,70 +8,32 @@
     align-items: center;
 }
 
-.nav-selection {
-    border: 0.2rem solid teal;
-    margin-right: 2rem;
+.nav-selection > * {
+    margin-right: 4rem;
 }
 
-
-
-/* .nav-bar-container {
-    color: white;
-    height: 8rem;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    background: white;
+.site-title {
+    margin-right: auto;
+    margin-left: 3rem;
+    font-size: 3rem;
 }
 
-.title-img {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-}
-
-h1 {
-    font-family: Apple Chancery;
-    font-size: 4rem;
-    color: rgb(203, 93, 49);
-    text-shadow:rgb(164,185,0)
-}
-
-.button-input-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    gap: 0.5rem;
-}
-
-input[type="text"] {
-    color: gray;
-    background-image: url('https://www.pinclipart.com/picdir/big/15-153148_search-magnifying-glass-icon-black-search-icon-png.png');
-    background-size: 8%;
-    background-repeat: no-repeat;
-    background-position: right;
-    margin-right: 1rem;
-    padding-right: 2rem;
-    border-color: rgb(203, 202, 202);
-}
-
-.home {
+.nav-btn {
     cursor: pointer;
-}
-
-.home,
-.categories {
-    background-color: white;
-    color: black;
-    padding: 0.8rem;
-    font-size: 1.6rem;
+    background-color: var(--purple);
+    font-family: 'Montserrat Alternates', 'Montserrat', sans-serif;
+    font-size: 2rem;
+    padding: 0.5rem 1rem;
     border: none;
+    color: #ffffff;
+    border-radius: 0.5rem;
+    outline: none;
+    transition: all 200ms;
 }
 
-.home:hover{
-    border-bottom: 2px solid pink;
+.nav-btn:hover {
+    transform: scale(.98);
+    border-bottom: 0.3rem #ffffff solid;
 }
 
 .dropdown {
@@ -83,23 +45,37 @@ input[type="text"] {
     display: none;
     position: absolute;
     background-color: #f9f9f9;
-    min-width: 160px;
+    min-width: 16rem;
     z-index: 1;
 }
 
 .dropdown-content > a {
-    color: black;
+    color: #333;
+    font-size: 1.5rem;
     background: #d2d2d2;
-    padding: 12px 16px;
+    padding: 1.2rem 1.6rem;
     text-decoration: none;
     display: block;
-  }
+}
 
 .dropdown-content > a:hover {
-    border-bottom: 2px solid pink;
+    border-bottom: 0.2rem solid purple;
     background-color: #f1f1f1
 }
 
 .dropdown:hover > .dropdown-content {
     display: block;
-} */
+}
+
+input[type="text"] {
+    color: #333;
+    font-size: 2rem;
+    background-image: url('https://www.pinclipart.com/picdir/big/15-153148_search-magnifying-glass-icon-black-search-icon-png.png');
+    background-size: 2rem;
+    background-repeat: no-repeat;
+    background-position: right;
+    padding: 0.5rem 1rem;
+    border-color: rgb(203, 202, 202);
+    width: 35rem;
+    height: 3rem;
+}
