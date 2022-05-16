@@ -44,7 +44,7 @@ class App extends Component {
   }
 
   handleChange = (event) => {
-    const filteredMovies = this.state.movies.movies.filter(movie => movie.title.includes(event.target.value));
+    const filteredMovies = this.state.movies.movies.filter(movie => movie.title.toLowerCase().includes(event.target.value.toLowerCase()));
     this.setState({ searchedMovies: {movies: filteredMovies} });
   }
 
