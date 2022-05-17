@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactPlayer from 'react-player'
 import '../styles/MovieDetails.css'
 
@@ -7,17 +7,26 @@ const MovieDetails = (props) => {
             overview, average_rating, genres, budget, revenue, 
             runtime, tagline} = props.movieDetails.movie;
     const movieVideos = props.movieVideos.videos
-        console.log('movie videos: ', movieVideos)
+    
+    const [hiddenStatus, setHiddenStatus] = useState(true)
+    const [backdropStatus, setBackdropStatus] = useState(false)
+
     return(
         <>
             <header className="showcase">
                 <div className="backdrop">
                     <section className="showcase-content" style={{backgroundImage: `url(${backdrop_path})`}}>
-                        <div className="showcase-fade">
+                        <div hidden={hiddenStatus}>
+                            <ReactPlayer url={`https://www.youtube.com/watch?v=${movieVideos[0].key}&autoplay=1&mute=1`}
+                            width='1000px'
+                            height='500px' />
+                        </div>
+                        <div className="showcase-fade" hidden={backdropStatus}>
                             <h1>{title}</h1>
                             <p>{tagline}</p>
                             <p>{overview}</p>
-                            <button className="btn btn-play" onClick={() => {console.log(title)}}></button>
+                            <button className="btn btn-play" onClick={() => {setHiddenStatus(false) 
+                                setBackdropStatus(true)}}></button>
                         </div>
                     </section>
                 </div>
@@ -33,7 +42,6 @@ const MovieDetails = (props) => {
                             <li>{`Budget: $${budget.toFixed(2)}`}</li>
                             <li>{`Revenue: $${revenue.toFixed(2)}`}</li>
                         </ul>
-                        <ReactPlayer url={`https://www.youtube.com/watch?v=${movieVideos[0].key}`} />
                     </article>
                 </section>
             </header>
