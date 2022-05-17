@@ -7,13 +7,13 @@ class MovieDetailsContainer extends Component {
     super()
     this.state = {
       currentMovieDetails: {},
-      currentMovieVideo: {},
+      currentMovieVideos: {},
       error: ''
     }
   }
 
   
-  getFetchResponse = (url) => {
+  getMovieResponse = (url) => {
     fetch(url)
     .then(response => {
       if(!response.ok) {
@@ -26,21 +26,37 @@ class MovieDetailsContainer extends Component {
       return response;
     })
     .then(response => response.json())
-    .then(movieDetails => console.log('movieResponse inside: ', movieDetails))
+    .then(movieDetails => this.setState({ currentMovieDetails: movieDetails }))
     .catch(err => console.log(err));
   }
 
-  // this.props.movieId 
+  getVideoResponse = (url) => {
+    fetch(url)
+    .then(response => {
+      if(!response.ok) {
+        console.log('HTTP request unsuccessful');
+        this.setState({error: `Network Error - status ${response.status} at URL: ${response.url}`});
+        throw new Error(`status ${response.status} at URL: ${response.url}`)
+      } else {
+        console.log('HTTP request successful');
+      }
+      return response;
+    })
+    .then(response => response.json())
+    .then(movieDetails => this.setState({ currentMovieVideos: movieDetails }))
+    .catch(err => console.log(err));
+  }
 
   componentDidMount = () => {
-    let movieResponse = this.getFetchResponse(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${this.props.movieId}`)
-    let videoResponse = this.getFetchResponse(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${this.props.movieId}/videos`)
+    // why doesn't promise all work here
+    this.getMovieResponse(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${this.props.movieId}`)
+    this.getVideoResponse(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${this.props.movieId}/videos`)
   }
-  // this.setState({ currentMovieDetails: movieDetails })
+
   render() {
     return (
       <div className='movie-details-container'>
-        {Object.keys(this.state.currentMovieDetails).length && <MovieDetails movieDetails={this.state.currentMovieDetails} />}
+        {Object.keys(this.state.currentMovieDetails).length && <MovieDetails movieDetails={ this.state.currentMovieDetails } movieVideos={ this.state.currentMovieVideos} />}
       </div>
     )
   }

@@ -5,6 +5,8 @@ const MovieDetails = (props) => {
     const {id, title, poster_path, backdrop_path, release_date, 
             overview, average_rating, genres, budget, revenue, 
             runtime, tagline} = props.movieDetails.movie;
+    const {movieVideos} = props.movieVideos.videos
+            console.log('movie detail props', props)
     return(
         <>
             <header className="showcase">
