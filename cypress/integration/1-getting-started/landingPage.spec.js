@@ -21,4 +21,19 @@ describe('Landing Page', () => {
         cy.get('.dropdown > .nav-btn').trigger('mouseover').get('.dropdown-content').contains('COMEDY')
     })
 
+    it('Should change the movies based on the search input', () => {
+
+    })
+
+    it('Should have a search bar', () => {
+        cy.get('input[placeholder="Search"]')
+    })
+
+    it('Should be able to type into the search bar', () => {
+        cy.get('input[name="search"]')
+        .type('The Owners')
+        .should('have.value', 'The Owners')
+    })
+
+    
 })

@@ -24,7 +24,7 @@ const NavBar = ({ goHome, handleChange }) => {
                 </li>
                 <li aria-setsize='4' aria-posinset='4'>
                     <form>
-                        <input type='text' placeholder='Search' onChange={event => handleChange(event)}></input>
+                        <input name='search' type='text' placeholder='Search' onChange={event => handleChange(event)}></input>
                     </form>
                 </li>
             </ul>
