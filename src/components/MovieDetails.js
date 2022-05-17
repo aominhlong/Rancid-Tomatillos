@@ -10,6 +10,7 @@ const MovieDetails = (props) => {
     
     const [hiddenStatus, setHiddenStatus] = useState(true)
     const [backdropStatus, setBackdropStatus] = useState(false)
+    const [playingStatus, setPlayingStatus] = useState(false)
 
     return(
         <>
@@ -18,15 +19,21 @@ const MovieDetails = (props) => {
                     <section className="showcase-content" style={{backgroundImage: `url(${backdrop_path})`}}>
                         <div hidden={hiddenStatus}>
                             <ReactPlayer url={`https://www.youtube.com/watch?v=${movieVideos[0].key}&autoplay=1&mute=1`}
-                            width='1000px'
-                            height='500px' />
+                            width='1100px'
+                            height='500px' 
+                            playing={playingStatus}/>
                         </div>
                         <div className="showcase-fade" hidden={backdropStatus}>
                             <h1>{title}</h1>
                             <p>{tagline}</p>
                             <p>{overview}</p>
-                            <button className="btn btn-play" onClick={() => {setHiddenStatus(false) 
-                                setBackdropStatus(true)}}></button>
+                            <button className="btn btn-play" onClick={() => 
+                                {
+                                    setHiddenStatus(false) 
+                                    setBackdropStatus(true)
+                                    setPlayingStatus(true)
+                                }}>
+                            </button>
                         </div>
                     </section>
                 </div>
