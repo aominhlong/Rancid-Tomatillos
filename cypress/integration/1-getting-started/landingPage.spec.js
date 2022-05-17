@@ -29,11 +29,11 @@ describe('Landing Page', () => {
         cy.get('input[placeholder="Search"]')
     })
 
-    it('Should be able to type into the search bar', () => {
+    it('Should be able to input a text and display a movie poster', () => {
         cy.get('input[name="search"]')
-        .type('The Owners')
-        .should('have.value', 'The Owners')
-    })
+        .type('Rogue')
 
-    
+        cy.get('[alt="Rogue movie poster"]')
+        .should('be.visible')
+    })
 })
