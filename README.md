@@ -45,6 +45,7 @@ This was part of Turing School of Software & Design module 3 project.
 - Fetch API
 - WAI-ARIA 
 - Webkit
+- [react-player npm package](https://www.npmjs.com/package/react-player)
 
 #### Instructions on Use
 Type in the name of anything, ideally a verb or noun, and then hit 'submit'. Users should see a card appear with the text the user input and three facts about it. That's it! 
@@ -57,6 +58,9 @@ To view a movie's specific detail, users can click on a specific movie of their 
 
 **_Go back to the Homepage_**
 To go to the homepage, users can click on the `HOME` button located at the top-right of the screen in the navigation bar. 
+
+**_Play the Movie Trailer_**
+To play a movie trailer, the user can click on a movie poster on the homepage and then click the play icon on the video.
 
 #### Demo of Features
 1. **Homepage**
