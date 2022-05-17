@@ -15,7 +15,7 @@ const NavBar = ({ goHome, handleChange }) => {
                     <div className='dropdown'>
                         <button className='nav-btn categories-btn'>GENRE</button>
                         <div className='dropdown-content'>
-                            <a href='#'>ACTION</a>
+                            <a className='action' href='#'>ACTION</a>
                             <a href='#'>ADVENTURE</a>
                             <a href='#'>HORROR</a>
                             <a href='#'>COMEDY</a>
