@@ -15,7 +15,7 @@ const NavBar = ({ goHome, handleChange }) => {
                     <div className='dropdown'>
                         <button className='nav-btn categories-btn'>GENRE</button>
                         <div className='dropdown-content'>
-                            <a href='#'>ACTION</a>
+                            <a className='action' href='#'>ACTION</a>
                             <a href='#'>ADVENTURE</a>
                             <a href='#'>HORROR</a>
                             <a href='#'>COMEDY</a>
@@ -24,7 +24,7 @@ const NavBar = ({ goHome, handleChange }) => {
                 </li>
                 <li aria-setsize='4' aria-posinset='4'>
                     <form>
-                        <input type='text' placeholder='Search' onChange={event => handleChange(event)}></input>
+                        <input name='search' type='text' placeholder='Search' onChange={event => handleChange(event)}></input>
                     </form>
                 </li>
             </ul>
