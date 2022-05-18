@@ -1,8 +1,14 @@
 describe('Landing Page', () => {
 
     beforeEach( () => {
-        cy.fixture('./MovieData.json').as('MovieData')
+        // cy.fixture('movieData').then(function(data){
+
+        // let test = data
+
+        // })
+        // .as('MovieData')
         cy.visit('http://localhost:3000/')
+        cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies', { fixture: 'movieData.json' })
     })
 
     it('Should have a title', () => {
@@ -30,8 +36,7 @@ describe('Landing Page', () => {
     })
 
     it('Should be able to input a text and display a movie poster', () => {
-        cy.get('input[name="search"]')
-        .type('Rogue')
+        cy.get('input[name="search"]').type('Rogue')
 
         cy.get('[alt="Rogue movie poster"]')
         .should('be.visible')
