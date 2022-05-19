@@ -1,3 +1,7 @@
+nav {
+    font-family: 'Montserrat Alternates', 'Montserrat', sans-serif;
+}
+
 .nav-selection {
     background: var(--purple);
     box-shadow: 0 0.5rem 3rem var(--light-purple);
@@ -27,7 +31,6 @@
     border: none;
     color: #ffffff;
     border-radius: 0.5rem;
-    outline: none;
     transition: all 200ms;
 }
 
