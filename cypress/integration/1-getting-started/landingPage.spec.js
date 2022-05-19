@@ -60,6 +60,11 @@ describe('Landing Page', () => {
         .should('be.visible')
     })
 
+    it('Should not show any movies if the user searches for a movie title that doesn"t exist', () => {
+        cy.get('input[name="search"]').type('The Great')
+        cy.get('div[class="movie-container"]').children().should('have.length', 0)
+    })
+    
     it('Should redisplay all movies when a user clicks home', () => {
         cy.get('input[name="search"]').type('Mulan')
 
@@ -78,8 +83,4 @@ describe('Landing Page', () => {
         .should('be.visible')
     })
 
-    it('Should not show any movies if the user searches for a movie title that doesn"t exist', () => {
-        cy.get('input[name="search"]').type('Monkey Butt')
-        cy.get('div[class="movie-container"]').children().should('have.length', 0)
-    })
 })
