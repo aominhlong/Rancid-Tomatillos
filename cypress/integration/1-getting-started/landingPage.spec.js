@@ -1,8 +1,8 @@
 describe('Landing Page', () => {
 
     beforeEach( () => {
-        cy.visit('http://localhost:3000/')
         cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies', { fixture: 'movieData.json' })
+        cy.visit('http://localhost:3000/')
     })
 
     it('Should have a title', () => {
