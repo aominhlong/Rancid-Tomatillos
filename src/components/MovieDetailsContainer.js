@@ -13,9 +13,9 @@ class MovieDetailsContainer extends Component {
   }
   
   getMovieResponse = (url) => {
-    // fetch(url)
     // fetch('https://httpstat.us/500') 
-    fetch('https://rancid-tomatillos.herokuapp.com/api/v2/moviesbittermelon') 
+    // fetch('https://rancid-tomatillos.herokuapp.com/api/v2/moviesbittermelon') 
+    fetch(url)
     .then(response => {
       if(!response.ok) {
         console.log('HTTP request unsuccessful');
@@ -32,11 +32,13 @@ class MovieDetailsContainer extends Component {
   }
 
   getVideoResponse = (url) => {
+    // fetch('https://httpstat.us/500') 
+    // fetch('https://rancid-tomatillos.herokuapp.com/api/v2/movies/666/videos') 
     fetch(url)
     .then(response => {
       if(!response.ok) {
         console.log('HTTP request unsuccessful');
-        this.setState({error: `Network Error - status ${response.status} at URL: ${response.url}`});
+        this.setState({error: `Network Error - status ${response.status} at URL: ${response.url} for videos`});
         throw new Error(`status ${response.status} at URL: ${response.url}`)
       } else {
         console.log('HTTP request successful');

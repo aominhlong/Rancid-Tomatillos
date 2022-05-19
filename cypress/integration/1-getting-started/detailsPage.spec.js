@@ -8,7 +8,7 @@ describe('Details view page', () => {
         cy.get('.movie-container > div').eq(1).click();
     })
 
-    // SAD PATHS
+    // SAD PATHS for our details page load
     it('Should display an error message on failed API load for details page - 500', () => {
       cy.intercept({
           method: 'GET', 
@@ -23,7 +23,7 @@ describe('Details view page', () => {
       .get('.error-msg').should('contain', 'Network Error - status 500')
     })
 
-    it.only('Should display an error message on failed API load for details page - 404', () => {
+    it('Should display an error message on failed API load for details page - 404', () => {
         cy.intercept({
             method: 'GET', 
             url: 'https://rancid-tomatillos.herokuapp.com/api/v2/movies/666'
@@ -33,6 +33,36 @@ describe('Details view page', () => {
             statusCode: 404,
             body: {
                 message: `Cannot GET /api/v2/movies/666`
+            }
+        })
+        .get('.error-msg').should('contain', 'Network Error - status 404')
+    })
+
+    // SAD PATHS for our video load
+    it('Should display an error message on failed API load for videos - 500', () => {
+      cy.intercept({
+          method: 'GET', 
+          url: 'https://rancid-tomatillos.herokuapp.com/api/v2/movies/337401/videos'
+      },
+      {
+          statusCode: 500,
+          body: {
+              message: `Network Error - status 500 at URL: https://rancid-tomatillos.herokuapp.com/api/v2/movies/337401/videos`
+          }
+      })
+      .get('.error-msg').should('contain', 'Network Error - status 500')
+    })
+
+    it('Should display an error message on failed API load for details page - 404', () => {
+        cy.intercept({
+            method: 'GET', 
+            url: 'https://rancid-tomatillos.herokuapp.com/api/v2/movies/666/videos'
+
+        },
+        {
+            statusCode: 404,
+            body: {
+                message: `Cannot GET /api/v2/movies/666/videos`
             }
         })
         .get('.error-msg').should('contain', 'Network Error - status 404')
