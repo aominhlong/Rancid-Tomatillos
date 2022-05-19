@@ -1,37 +1,50 @@
 describe('Details view page', () => {
 
     beforeEach( () => {
+        cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies', { fixture: 'movieData.json' })
+        cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies/337401', { fixture: 'mulanDetails.json' })
         cy.visit('http://localhost:3000/')
+        cy.wait(2000)
         cy.get('.movie-container > div').eq(1).click();
-        cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies/337401', { 'fixture: MulanDetails' })
     })
 
-    it('Should visit movie details page', () => {
-        cy.get('div')
+    it('Should see movie title, movie description, and play button in movie player box', () => {
+        cy.get('.showcase-content').contains('Mulan')
+        cy.get('.showcase-content').contains('When the Emperor of China issues a decree that one man per family must serve in the Imperial Chinese Army to defend the country from Huns')
     })
 
+    it('Should be able to play a movie preview', () => {
+        cy.get('.btn').click()
+        cy.get('iframe').should('have.attr', 'src').should('include', 'https://www.youtube.com/embed/01ON04GCwKs')
+    })
 
-    // it('Should have a title', () => {
-    //     cy.contains('RANCID TOMATILLOS')
-    // })
+    it('Should load movie poster', () => {
+        cy.get('.details-content').find('img').should('have.attr', 'src').should('include', 'https://image.tmdb.org/t/p/original//aKx1ARwG55zZ0GpRvU2WrGrCG9o.jpg')
+    })
 
-    // it('Should have a home button', () => {
-    //     cy.get('button').contains('HOME')
-    // }) 
+    it('Should display a list of movie details', () => {
+        cy.get('article')
+          .should('contain.text', 'Mulan (2020)')
 
-    // it('Should have a genre drop down menu with different genres displayed', () => {
-    //     cy.get('button').contains('GENRE')
-    //     cy.get('.dropdown > .nav-btn').trigger('mouseover').get('.dropdown-content').contains('ACTION')
-    //     cy.get('.dropdown > .nav-btn').trigger('mouseover').get('.dropdown-content').contains('ADVENTURE')
-    //     cy.get('.dropdown > .nav-btn').trigger('mouseover').get('.dropdown-content').contains('HORROR')
-    //     cy.get('.dropdown > .nav-btn').trigger('mouseover').get('.dropdown-content').contains('COMEDY')
-    // })
+        cy.get('article')
+          .should('contain.text', 'Release Date: 2020/09/04')
 
-    // it('Should be able to input a text and display a movie poster', () => {
-    //     cy.get('input[name="search"]')
-    //     .type('Rogue')
+        cy.get('article')
+          .should('contain.text', 'Runtime: 115 minutes')
 
-    //     cy.get('[alt="Rogue movie poster"]')
-    //     .should('be.visible')
-    // })
+        cy.get('article')
+          .should('contain.text', 'Genre: Action,Adventure,Drama,Fantasy')
+
+        cy.get('article')
+          .should('contain.text', 'Budget: $200000000.00')
+
+        cy.get('article')
+          .should('contain.text', 'Revenue: $57000000.00')
+    })
+
+    it('Should return home when home button clicked', () => {
+        cy.get('.home-btn').click();
+        cy.url().should('eq', 'http://localhost:3000/') // more precise
+        // cy.url().should('include', 'http://localhost:3000/')
+    })
 })

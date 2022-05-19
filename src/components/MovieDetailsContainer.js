@@ -11,7 +11,6 @@ class MovieDetailsContainer extends Component {
       error: ''
     }
   }
-
   
   getMovieResponse = (url) => {
     fetch(url)
@@ -56,7 +55,7 @@ class MovieDetailsContainer extends Component {
   render() {
     return (
       <div className='movie-details-container'>
-        {Object.keys(this.state.currentMovieDetails).length && <MovieDetails movieDetails={ this.state.currentMovieDetails } movieVideos={ this.state.currentMovieVideos} />}
+        {Object.keys(this.state.currentMovieDetails).length && Object.keys(this.state.currentMovieVideos).length && <MovieDetails movieDetails={ this.state.currentMovieDetails } movieVideos={ this.state.currentMovieVideos} />}
       </div>
     )
   }
