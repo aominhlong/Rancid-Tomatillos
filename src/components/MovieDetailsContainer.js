@@ -11,9 +11,10 @@ class MovieDetailsContainer extends Component {
       error: ''
     }
   }
-
   
   getMovieResponse = (url) => {
+    // fetch('https://httpstat.us/500') 
+    // fetch('https://rancid-tomatillos.herokuapp.com/api/v2/moviesbittermelon') 
     fetch(url)
     .then(response => {
       if(!response.ok) {
@@ -31,11 +32,13 @@ class MovieDetailsContainer extends Component {
   }
 
   getVideoResponse = (url) => {
+    // fetch('https://httpstat.us/500') 
+    // fetch('https://rancid-tomatillos.herokuapp.com/api/v2/movies/666/videos') 
     fetch(url)
     .then(response => {
       if(!response.ok) {
         console.log('HTTP request unsuccessful');
-        this.setState({error: `Network Error - status ${response.status} at URL: ${response.url}`});
+        this.setState({error: `Network Error - status ${response.status} at URL: ${response.url} for videos`});
         throw new Error(`status ${response.status} at URL: ${response.url}`)
       } else {
         console.log('HTTP request successful');
@@ -43,8 +46,8 @@ class MovieDetailsContainer extends Component {
       return response;
     })
     .then(response => response.json())
-    // .then(movieDetails => this.setState({ currentMovieVideos: movieDetails }))
-    // .catch(err => console.log(err));
+    .then(movieDetails => this.setState({ currentMovieVideos: movieDetails }))
+    .catch(err => console.log(err));
   }
 
   componentDidMount = () => {
@@ -56,7 +59,8 @@ class MovieDetailsContainer extends Component {
   render() {
     return (
       <div className='movie-details-container'>
-        {Object.keys(this.state.currentMovieDetails).length && <MovieDetails movieDetails={ this.state.currentMovieDetails } movieVideos={ this.state.currentMovieVideos} />}
+        <h2 className='error-msg'>{this.state.error}</h2>
+        {Object.keys(this.state.currentMovieDetails).length && Object.keys(this.state.currentMovieVideos).length && <MovieDetails movieDetails={ this.state.currentMovieDetails } movieVideos={ this.state.currentMovieVideos} />}
       </div>
     )
   }
