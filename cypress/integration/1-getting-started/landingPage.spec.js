@@ -1,12 +1,6 @@
 describe('Landing Page', () => {
 
     beforeEach( () => {
-        // cy.fixture('movieData').then(function(data){
-
-        // let test = data
-
-        // })
-        // .as('MovieData')
         cy.visit('http://localhost:3000/')
         cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies', { fixture: 'movieData.json' })
     })
@@ -18,6 +12,10 @@ describe('Landing Page', () => {
     it('Should have a home button', () => {
         cy.get('button').contains('HOME')
     }) 
+    
+    it('Should have a search bar', () => {
+        cy.get('input[placeholder="Search"]')
+    })
 
     it('Should have a genre drop down menu with different genres displayed', () => {
         cy.get('button').contains('GENRE')
@@ -27,12 +25,15 @@ describe('Landing Page', () => {
         cy.get('.dropdown > .nav-btn').trigger('mouseover').get('.dropdown-content').contains('COMEDY')
     })
 
-    it('Should change the movies based on the search input', () => {
+    it('Should display all movies on when a user first comes to the site', () => {
+        cy.get('[alt="Money Plane movie poster"]')
+        .should('be.visible')
+        
+        cy.get('[alt="Mulan movie poster"]')
+        .should('be.visible')
 
-    })
-
-    it('Should have a search bar', () => {
-        cy.get('input[placeholder="Search"]')
+        cy.get('[alt="Rogue movie poster"]')
+        .should('be.visible')
     })
 
     it('Should be able to input a text and display a movie poster', () => {
@@ -40,5 +41,45 @@ describe('Landing Page', () => {
 
         cy.get('[alt="Rogue movie poster"]')
         .should('be.visible')
+    })  
+    
+    it('Should change the movies based on the search input', () => {
+        cy.get('input[name="search"]').type('M')
+
+        cy.get('[alt="Mulan movie poster"]')
+        .should('be.visible')
+
+        cy.get('[alt="Money Plane movie poster"]')
+        .should('be.visible')
+    })
+
+    it('Should only show one movie poster if the search input matches the name', () => {
+        cy.get('input[name="search"]').type('Mulan')
+
+        cy.get('[alt="Mulan movie poster"]')
+        .should('be.visible')
+    })
+
+    it('Should redisplay all movies when a user clicks home', () => {
+        cy.get('input[name="search"]').type('Mulan')
+
+        cy.get('[alt="Mulan movie poster"]')
+        .should('be.visible')
+
+        cy.get('button').contains('HOME').click()
+
+        cy.get('[alt="Money Plane movie poster"]')
+        .should('be.visible')
+        
+        cy.get('[alt="Mulan movie poster"]')
+        .should('be.visible')
+
+        cy.get('[alt="Rogue movie poster"]')
+        .should('be.visible')
+    })
+
+    it('Should not show any movies if the user searches for a movie title that doesn"t exist', () => {
+        cy.get('input[name="search"]').type('Monkey Butt')
+        cy.get('div[class="movie-container"]').children().should('have.length', 0)
     })
 })
