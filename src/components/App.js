@@ -25,8 +25,9 @@ class App extends Component {
   }
 
   componentDidMount = () => {
-    // fetch('https://httpstat.us/500')
-    fetch('https://rancid-tomatillos.herokuapp.com/api/v2/movies')
+    // fetch('https://httpstat.us/500') 
+    fetch('https://rancid-tomatillos.herokuapp.com/api/v2/moviesbittermelon') 
+    // fetch('https://rancid-tomatillos.herokuapp.com/api/v2/movies')
     .then(response => {
       if(!response.ok) {
         console.log('HTTP request unsuccessful');

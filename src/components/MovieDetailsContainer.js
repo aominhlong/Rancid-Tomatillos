@@ -42,8 +42,8 @@ class MovieDetailsContainer extends Component {
       return response;
     })
     .then(response => response.json())
-    // .then(movieDetails => this.setState({ currentMovieVideos: movieDetails }))
-    // .catch(err => console.log(err));
+    .then(movieDetails => this.setState({ currentMovieVideos: movieDetails }))
+    .catch(err => console.log(err));
   }
 
   componentDidMount = () => {

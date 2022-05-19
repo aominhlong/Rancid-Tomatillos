@@ -5,8 +5,23 @@ describe('Landing Page', () => {
         cy.visit('http://localhost:3000/')
     })
 
-    // Test API
-    it.only('Should display an error message on failed API load', () => {
+    // FINISH AFTER ROUTER
+    it.skip('Should load api and return 200 status', () => {
+        cy.intercept({
+            method: 'GET', 
+            url: 'https://rancid-tomatillos.herokuapp.com/api/v2/movies'
+        },
+        {
+            statusCode: 200,
+            body: {
+                message: `Network Error - status 500 at URL: https://rancid-tomatillos.herokuapp.com/api/v2/movies`
+            }
+        })
+        .get('.error-msg').should('contain', 'Network Error - status 500')
+    })
+
+    // SAD PATHS
+    it('Should display an error message on failed API load - 500', () => {
         cy.intercept({
             method: 'GET', 
             url: 'https://rancid-tomatillos.herokuapp.com/api/v2/movies'
@@ -18,6 +33,21 @@ describe('Landing Page', () => {
             }
         })
         .get('.error-msg').should('contain', 'Network Error - status 500')
+    })
+
+    it.only('Should display an error message on failed API load - 404', () => {
+        cy.intercept({
+            method: 'GET', 
+            url: 'https://rancid-tomatillos.herokuapp.com/api/v2/moviesbittermelon'
+
+        },
+        {
+            statusCode: 404,
+            body: {
+                message: `Cannot GET /api/v2/moviesbittermelon`
+            }
+        })
+        .get('.error-msg').should('contain', 'Network Error - status 404')
     })
 
     it('Should have a title', () => {
