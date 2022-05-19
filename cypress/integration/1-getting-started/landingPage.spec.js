@@ -5,6 +5,21 @@ describe('Landing Page', () => {
         cy.visit('http://localhost:3000/')
     })
 
+    // Test API
+    it.only('Should display an error message on failed API load', () => {
+        cy.intercept({
+            method: 'GET', 
+            url: 'https://rancid-tomatillos.herokuapp.com/api/v2/movies'
+        },
+        {
+            statusCode: 500,
+            body: {
+                message: `Network Error - status 500 at URL: https://rancid-tomatillos.herokuapp.com/api/v2/movies`
+            }
+        })
+        .get('.error-msg').should('contain', 'Network Error - status 500')
+    })
+
     it('Should have a title', () => {
         cy.contains('RANCID TOMATILLOS')
     })
@@ -63,6 +78,7 @@ describe('Landing Page', () => {
     it('Should not show any movies if the user searches for a movie title that doesn"t exist', () => {
         cy.get('input[name="search"]').type('The Great')
         cy.get('div[class="movie-container"]').children().should('have.length', 0)
+        // Check error message string
     })
     
     it('Should redisplay all movies when a user clicks home', () => {

@@ -60,7 +60,7 @@ class App extends Component {
       return(
         <main className='app-main'>
           <NavBar goHome={ this.goHome } handleChange={ this.handleChange }/>
-          <h1>{this.state.error}</h1>
+          <h2 className='error-msg'>{this.state.error}</h2>
           {/* <Switch> */}
           {/* <Route exact path="/" component={() => <MovieContainer movies={ this.state.movies } loadMovieDetails={ this.loadMovieDetails } />} /> */}
           {/* </Switch> */}

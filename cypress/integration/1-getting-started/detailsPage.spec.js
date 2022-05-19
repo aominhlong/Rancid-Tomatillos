@@ -22,7 +22,7 @@ describe('Details view page', () => {
         cy.get('.details-content').find('img').should('have.attr', 'src').should('include', 'https://image.tmdb.org/t/p/original//aKx1ARwG55zZ0GpRvU2WrGrCG9o.jpg')
     })
 
-    it('Should display a list of movie details', () => {
+    it('Should display a list of movie details', () => { // chain .should
         cy.get('article')
           .should('contain.text', 'Mulan (2020)')
 
