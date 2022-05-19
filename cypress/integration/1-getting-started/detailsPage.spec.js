@@ -8,6 +8,36 @@ describe('Details view page', () => {
         cy.get('.movie-container > div').eq(1).click();
     })
 
+    // SAD PATHS
+    it('Should display an error message on failed API load for details page - 500', () => {
+      cy.intercept({
+          method: 'GET', 
+          url: 'https://rancid-tomatillos.herokuapp.com/api/v2/movies/337401'
+      },
+      {
+          statusCode: 500,
+          body: {
+              message: `Network Error - status 500 at URL: https://rancid-tomatillos.herokuapp.com/api/v2/movies/337401`
+          }
+      })
+      .get('.error-msg').should('contain', 'Network Error - status 500')
+    })
+
+    it.only('Should display an error message on failed API load for details page - 404', () => {
+        cy.intercept({
+            method: 'GET', 
+            url: 'https://rancid-tomatillos.herokuapp.com/api/v2/movies/666'
+
+        },
+        {
+            statusCode: 404,
+            body: {
+                message: `Cannot GET /api/v2/movies/666`
+            }
+        })
+        .get('.error-msg').should('contain', 'Network Error - status 404')
+    })
+
     it('Should see movie title, movie description, and play button in movie player box', () => {
         cy.get('.showcase-content').contains('Mulan')
         cy.get('.showcase-content').contains('When the Emperor of China issues a decree that one man per family must serve in the Imperial Chinese Army to defend the country from Huns')

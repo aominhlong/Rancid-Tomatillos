@@ -13,7 +13,9 @@ class MovieDetailsContainer extends Component {
   }
   
   getMovieResponse = (url) => {
-    fetch(url)
+    // fetch(url)
+    // fetch('https://httpstat.us/500') 
+    fetch('https://rancid-tomatillos.herokuapp.com/api/v2/moviesbittermelon') 
     .then(response => {
       if(!response.ok) {
         console.log('HTTP request unsuccessful');
@@ -55,6 +57,7 @@ class MovieDetailsContainer extends Component {
   render() {
     return (
       <div className='movie-details-container'>
+        <h2 className='error-msg'>{this.state.error}</h2>
         {Object.keys(this.state.currentMovieDetails).length && Object.keys(this.state.currentMovieVideos).length && <MovieDetails movieDetails={ this.state.currentMovieDetails } movieVideos={ this.state.currentMovieVideos} />}
       </div>
     )
