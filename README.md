@@ -45,6 +45,7 @@ This was part of Turing School of Software & Design module 3 project.
 - Fetch API
 - WAI-ARIA 
 - Webkit
+- React Router for client-side routing
 - [react-player npm package](https://www.npmjs.com/package/react-player)
 
 #### Instructions on Use

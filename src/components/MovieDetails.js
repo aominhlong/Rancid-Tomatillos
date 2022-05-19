@@ -3,9 +3,11 @@ import ReactPlayer from 'react-player'
 import '../styles/MovieDetails.css'
 
 const MovieDetails = (props) => {
-    const {id, title, poster_path, backdrop_path, release_date, 
+    // ({ movieDetails:movie, movieVideos:videos })  take props and movie'x'
+
+    const { id, title, poster_path, backdrop_path, release_date, 
             overview, average_rating, genres, budget, revenue, 
-            runtime, tagline} = props.movieDetails.movie;
+            runtime, tagline } = props.movieDetails.movie;
     const movieVideos = props.movieVideos.videos
     
     const [hiddenStatus, setHiddenStatus] = useState(true)
