@@ -26,11 +26,9 @@ const NavBar = ({ goHome, handleChange }) => {
                     </div>
                 </li>
                 <li aria-setsize='4' aria-posinset='4'>
-                    <NavLink to='/search'>
                         <form>
                             <input name='search' type='text' placeholder='Search' onChange={event => handleChange(event)}></input>
                         </form>
-                    </NavLink>
                 </li>
             </ul>
         </nav>
