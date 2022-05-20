@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import '../styles/NavBar.css'
 
 const NavBar = ({ goHome, handleChange }) => {
@@ -9,7 +10,9 @@ const NavBar = ({ goHome, handleChange }) => {
                     <h1>RANCID TOMATILLOS</h1>
                 </li>
                 <li aria-setsize='4' aria-posinset='2'>
+                <NavLink to='/'>
                     <button className='nav-btn home-btn' onClick={() => goHome()}>HOME</button>
+                </NavLink>
                 </li>
                 <li aria-setsize='4' aria-posinset='3'>
                     <div className='dropdown'>

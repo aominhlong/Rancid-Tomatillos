@@ -20,10 +20,10 @@ const MovieDetails = (props) => {
                 <div className="backdrop">
                     <section className="showcase-content" style={{backgroundImage: `url(${backdrop_path})`}}>
                         <div hidden={hiddenStatus}>
-                            {/* <ReactPlayer url={`https://www.youtube.com/watch?v=${movieVideos[0].key}&autoplay=1&mute=1`} */}
-                            {/* width='1100px'
+                            <ReactPlayer url={`https://www.youtube.com/watch?v=${movieVideos[0].key}&autoplay=1&mute=1`}
+                            width='1100px'
                             height='500px' 
-                            playing={playingStatus}/> */}
+                            playing={playingStatus}/>
                         </div>
                         <div className="showcase-fade" hidden={backdropStatus}>
                             <h1>{title}</h1>

@@ -64,9 +64,7 @@ class App extends Component {
           {/* Page load on user clicking on a poster */}
           <Route exact path="/movie/:id" render={({ match }) => {
             console.log("match", match)
-            // const currentMovie = this.state.movies.movies.find(movie => Number(movie.id) === Number(match.params.id))
-            return <MovieDetailsContainer movieId={ parseInt(match.params.id) } loadMovieDetails={ this.loadMovieDetails } /> } 
-          } />
+            return <MovieDetailsContainer movieId={ parseInt(match.params.id) } loadMovieDetails={ this.loadMovieDetails } /> } } />
         </Switch>
       </main>
     )
