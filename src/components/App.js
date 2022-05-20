@@ -1,17 +1,9 @@
 import React, {Component} from 'react';
-import { Route, Switch, Link } from 'react-router-dom';
+import { Route, Switch, NavLink } from 'react-router-dom';
 import MovieContainer from './MovieContainer';
 import MovieDetailsContainer from './MovieDetailsContainer';
 import NavBar from './NavBar';
 import '../styles/App.css';
-
-const Pizza = () => {
-  return (
-    <div>
-      <h2>PIZZA PIZZA PIZZA</h2>
-    </div>
-  )
-}
 
 class App extends Component {
   constructor() {
@@ -27,6 +19,7 @@ class App extends Component {
   componentDidMount = () => {
     // fetch('https://httpstat.us/500') 
     // fetch('https://rancid-tomatillos.herokuapp.com/api/v2/moviesbittermelon') 
+    console.log('componentDidMount is working')
     fetch('https://rancid-tomatillos.herokuapp.com/api/v2/movies')
     .then(response => {
       if(!response.ok) {
@@ -39,7 +32,9 @@ class App extends Component {
       return response;
     })
     .then(response => response.json())
-    .then(movies => this.setState({ movies: movies }))
+    .then(movies => { 
+      console.log('movies:', movies)
+      return this.setState({ movies: movies })})
     .catch(err => console.log(err));
   }
 
@@ -57,31 +52,53 @@ class App extends Component {
     this.setState({ searchedMovies: {movies: filteredMovies}});
   }
 
-  render() {
-      return(
-        <main className='app-main'>
-          <NavBar goHome={ this.goHome } handleChange={ this.handleChange }/>
-          <h2 className='error-msg'>{this.state.error}</h2>
-          {/* <Switch> */}
-          {/* <Route exact path="/" component={() => <MovieContainer movies={ this.state.movies } loadMovieDetails={ this.loadMovieDetails } />} /> */}
-          {/* </Switch> */}
-          {/* If there is no search, then load all movies */}
-          <Route exact path="/pizza" component={Pizza}/>
-          {(!Object.keys(this.state.currentMovie).length 
-            && Object.keys(this.state.movies).length 
-            && !Object.keys(this.state.searchedMovies).length)
-            && <Route exact path="/" component={() => <MovieContainer movies={ this.state.movies } loadMovieDetails={ this.loadMovieDetails } />} /> 
-          }
+//   render() {
+//       return(
+//         <main className='app-main'>
+//           <NavBar goHome={ this.goHome } handleChange={ this.handleChange }/>
+//           <h2 className='error-msg'>{this.state.error}</h2>
+//           {/* <Switch> */}
+//           {/* <Route exact path="/" component={() => <MovieContainer movies={ this.state.movies } loadMovieDetails={ this.loadMovieDetails } />} /> */}
+//           {/* </Switch> */}
+//           {/* If there is no search, then load all movies */}
+//           <Route exact path="/pizza" component={Pizza}/>
+//           {(!Object.keys(this.state.currentMovie).length 
+//             && Object.keys(this.state.movies).length 
+//             && !Object.keys(this.state.searchedMovies).length)
+//             && <Route exact path="/" component={() => <MovieContainer movies={ this.state.movies } loadMovieDetails={ this.loadMovieDetails } />} /> 
+//           }
 
-          {/* Load search results instead */}
-          {(!Object.keys(this.state.currentMovie).length && Object.keys(this.state.searchedMovies).length) 
-            && <MovieContainer movies={this.state.searchedMovies} loadMovieDetails={ this.loadMovieDetails } /> 
-          }
+//           {/* Load search results instead */}
+//           {(!Object.keys(this.state.currentMovie).length && Object.keys(this.state.searchedMovies).length) 
+//             && <MovieContainer movies={this.state.searchedMovies} loadMovieDetails={ this.loadMovieDetails } /> 
+//           }
           
-          {/* Page load on user clicking on a poster */}
-          {Object.keys(this.state.currentMovie).length && <MovieDetailsContainer movieId={ this.state.currentMovie.id } />}
-        </main>
-      )
+//           {/* Page load on user clicking on a poster */}
+//           {Object.keys(this.state.currentMovie).length && <MovieDetailsContainer movieId={ this.state.currentMovie.id } />}
+//         </main>
+//       )
+//   }
+  render() {
+    return(
+      <main className='app-main'>
+        <NavBar goHome={this.goHome} handleChange={ this.handleChange }/>
+        <h1>{this.state.error}</h1>
+
+        {/* If there is no search, then load all movies */}
+
+          <Route exact path="/" render={() => <MovieContainer movies={this.state.movies} loadMovieDetails={ this.loadMovieDetails } /> } /> 
+
+        {/* Load search results instead */}
+        {/* {(!Object.keys(this.state.currentMovie).length && Object.keys(this.state.searchedMovies).length) 
+          && <MovieContainer movies={this.state.searchedMovies} loadMovieDetails={ this.loadMovieDetails } /> 
+        } */}
+        
+        {/* Page load on user clicking on a poster */}
+        {/* <NavLink to={`/${this.state.currentMovie.id}`} component={ MovieDetailsContainer }>Potato</NavLink> */}
+        {/* <Route path={`/${this.state.currentMovie.id}`} render= */}
+        {Object.keys(this.state.currentMovie).length && <MovieDetailsContainer movieId={ this.state.currentMovie.id } />}
+      </main>
+    )
   }
 }
 
@@ -111,4 +128,4 @@ export default App;
 //     </main>
 //   )
 // }
-// }
+
