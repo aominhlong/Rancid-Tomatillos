@@ -11,7 +11,7 @@ class App extends Component {
       this.state = {
         movies: {},
         searchedMovies: {},
-        currentMovie: {},
+        currentMovieId: {},
         error: ''
       }
   }
@@ -33,14 +33,13 @@ class App extends Component {
     })
     .then(response => response.json())
     .then(movies => { 
-      console.log('movies:', movies)
       return this.setState({ movies: movies })})
     .catch(err => console.log(err));
   }
 
   loadMovieDetails = (id) => {
     const selectedMovie = this.state.movies.movies.find(movie => movie.id === id);
-    this.setState({ currentMovie: selectedMovie });
+    this.setState({ currentMovie: id });
   }
 
   goHome = () => {
@@ -52,51 +51,23 @@ class App extends Component {
     this.setState({ searchedMovies: {movies: filteredMovies}});
   }
 
-//   render() {
-//       return(
-//         <main className='app-main'>
-//           <NavBar goHome={ this.goHome } handleChange={ this.handleChange }/>
-//           <h2 className='error-msg'>{this.state.error}</h2>
-//           {/* <Switch> */}
-//           {/* <Route exact path="/" component={() => <MovieContainer movies={ this.state.movies } loadMovieDetails={ this.loadMovieDetails } />} /> */}
-//           {/* </Switch> */}
-//           {/* If there is no search, then load all movies */}
-//           <Route exact path="/pizza" component={Pizza}/>
-//           {(!Object.keys(this.state.currentMovie).length 
-//             && Object.keys(this.state.movies).length 
-//             && !Object.keys(this.state.searchedMovies).length)
-//             && <Route exact path="/" component={() => <MovieContainer movies={ this.state.movies } loadMovieDetails={ this.loadMovieDetails } />} /> 
-//           }
-
-//           {/* Load search results instead */}
-//           {(!Object.keys(this.state.currentMovie).length && Object.keys(this.state.searchedMovies).length) 
-//             && <MovieContainer movies={this.state.searchedMovies} loadMovieDetails={ this.loadMovieDetails } /> 
-//           }
-          
-//           {/* Page load on user clicking on a poster */}
-//           {Object.keys(this.state.currentMovie).length && <MovieDetailsContainer movieId={ this.state.currentMovie.id } />}
-//         </main>
-//       )
-//   }
   render() {
     return(
       <main className='app-main'>
         <NavBar goHome={this.goHome} handleChange={ this.handleChange }/>
         <h1>{this.state.error}</h1>
 
-        {/* If there is no search, then load all movies */}
+        <Switch>
+          {/* Load all movies */}
+          <Route exact path="/" render={() => <MovieContainer movies={this.state.movies} loadMovieDetails={ this.loadMovieDetails }/> } /> 
 
-          <Route exact path="/" render={() => <MovieContainer movies={this.state.movies} loadMovieDetails={ this.loadMovieDetails } /> } /> 
-
-        {/* Load search results instead */}
-        {/* {(!Object.keys(this.state.currentMovie).length && Object.keys(this.state.searchedMovies).length) 
-          && <MovieContainer movies={this.state.searchedMovies} loadMovieDetails={ this.loadMovieDetails } /> 
-        } */}
-        
-        {/* Page load on user clicking on a poster */}
-        {/* <NavLink to={`/${this.state.currentMovie.id}`} component={ MovieDetailsContainer }>Potato</NavLink> */}
-        {/* <Route path={`/${this.state.currentMovie.id}`} render= */}
-        {Object.keys(this.state.currentMovie).length && <MovieDetailsContainer movieId={ this.state.currentMovie.id } />}
+          {/* Page load on user clicking on a poster */}
+          <Route exact path="/movie/:id" render={({ match }) => {
+            console.log("match", match)
+            // const currentMovie = this.state.movies.movies.find(movie => Number(movie.id) === Number(match.params.id))
+            return <MovieDetailsContainer movieId={ parseInt(match.params.id) } loadMovieDetails={ this.loadMovieDetails } /> } 
+          } />
+        </Switch>
       </main>
     )
   }
