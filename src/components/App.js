@@ -11,7 +11,7 @@ class App extends Component {
       this.state = {
         movies: {},
         searchedMovies: {},
-        currentMovieId: {},
+        currentMovie: {},
         error: ''
       }
   }
@@ -39,7 +39,7 @@ class App extends Component {
 
   loadMovieDetails = (id) => {
     const selectedMovie = this.state.movies.movies.find(movie => movie.id === id);
-    this.setState({ currentMovie: id });
+    this.setState({ currentMovie: selectedMovie });
   }
 
   goHome = () => {
@@ -49,6 +49,7 @@ class App extends Component {
   handleChange = (event) => {
     const filteredMovies = this.state.movies.movies.filter(movie => movie.title.toLowerCase().includes(event.target.value.toLowerCase()));
     this.setState({ searchedMovies: {movies: filteredMovies}});
+    console.log('movie container', this.state.searchedMovies)
   }
 
   render() {
@@ -66,6 +67,13 @@ class App extends Component {
             console.log("match", match)
             return <MovieDetailsContainer movieId={ parseInt(match.params.id) } loadMovieDetails={ this.loadMovieDetails } /> } } />
         </Switch>
+
+          {/* Load search results instead */}
+          {(!Object.keys(this.state.currentMovie).length && Object.keys(this.state.searchedMovies).length) 
+            && <MovieContainer movies={this.state.searchedMovies} loadMovieDetails={ this.loadMovieDetails } /> 
+          }
+            {/* {( <MovieContainer movies={this.state.searchedMovies} loadMovieDetails={ this.loadMovieDetails } /> )
+            } */}
       </main>
     )
   }
