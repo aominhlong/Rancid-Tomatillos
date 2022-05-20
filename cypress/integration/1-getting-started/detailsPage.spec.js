@@ -3,9 +3,8 @@ describe('Details view page', () => {
     beforeEach( () => {
         cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies', { fixture: 'movieData.json' })
         cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies/337401', { fixture: 'mulanDetails.json' })
-        cy.visit('http://localhost:3000/')
+        cy.visit('http://localhost:3000/movie/337401')
         cy.wait(2000)
-        cy.get('.movie-container > div').eq(1).click();
     })
 
     // SAD PATHS for our details page load
