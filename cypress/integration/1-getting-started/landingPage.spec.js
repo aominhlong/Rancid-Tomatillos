@@ -1,58 +1,27 @@
 describe('Landing Page', () => {
-
     beforeEach( () => {
         cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies', { fixture: 'movieData.json' })
+        cy.wait(2000)
         cy.visit('http://localhost:3000/')
     })
 
-    // FINISH AFTER ROUTER
-    it.skip('Should load api and return 200 status', () => {
-        cy.intercept({
-            method: 'GET', 
-            url: 'https://rancid-tomatillos.herokuapp.com/api/v2/movies'
-        },
-        {
-            statusCode: 200,
-            body: {
-                message: `Network Error - status 500 at URL: https://rancid-tomatillos.herokuapp.com/api/v2/movies`
-            }
-        })
-        .get('.error-msg').should('contain', 'Network Error - status 500')
+    it('Should load landing page URL', () => {
+        cy.url().should('eq', 'http://localhost:3000/')
     })
 
-    // SAD PATHS
-    it('Should display an error message on failed API load - 500', () => {
-        cy.intercept({
-            method: 'GET', 
-            url: 'https://rancid-tomatillos.herokuapp.com/api/v2/movies'
-        },
-        {
+    it('Should display error message to a user when the server is down', () => {
+        cy.intercept('https://rancid-tomatillos.herokuapp.com/api/v2/movies', {
             statusCode: 500,
-            body: {
-                message: `Network Error - status 500 at URL: https://rancid-tomatillos.herokuapp.com/api/v2/movies`
-            }
-        })
-        .get('.error-msg').should('contain', 'Network Error - status 500')
-    })
+        });
+        cy.contains('Network Error - status 500');
+    });
 
-    it('Should display an error message on failed API load - 404', () => {
-        cy.intercept({
-            method: 'GET', 
-            url: 'https://rancid-tomatillos.herokuapp.com/api/v2/moviesbittermelon'
-
-        },
-        {
+    it('Should display error message to user when the page is not found', () => {
+        cy.intercept('https://rancid-tomatillos.herokuapp.com/api/v2/movies', {
             statusCode: 404,
-            body: {
-                message: `Cannot GET /api/v2/moviesbittermelon`
-            }
-        })
-        .get('.error-msg').should('contain', 'Network Error - status 404')
-    })
-
-    it('Should load home URL', () => {
-        cy.location("host").should('eq', 'localhost:3000')
-    })
+        });
+        cy.contains('Network Error - status 404');
+    });
 
     it('Should have a title', () => {
         cy.contains('RANCID TOMATILLOS')
@@ -102,11 +71,28 @@ describe('Landing Page', () => {
         .should('be.visible')
     })
 
+    it('Should start with a clear nav search bar on page load', () => {
+        cy.get('input[name="search"]').should('have.value', '')
+    })
+
+    it('Should clear nav search bar when movie poster clicked', () => {
+        cy.get('input[name="search"]').type('Mulan')
+        cy.get('[alt="Mulan movie poster"]').click()
+
+        cy.get('input[name="search"]').should('have.value', '')
+    })
+
+    it('Should clear nav search bar when home button clicked', () => {
+        cy.get('input[name="search"]').type('Mulan')
+        cy.get('button').contains('HOME').click()
+
+        cy.get('input[name="search"]').should('have.value', '')
+    })
+
     it('Should only show one movie poster if the search input matches the name', () => {
         cy.get('input[name="search"]').type('Mulan')
 
-        cy.get('[alt="Mulan movie poster"]')
-        .should('be.visible')
+        cy.get('[alt="Mulan movie poster"]').should('be.visible')
     })
 
     it('Should not show any movies if the user searches for a movie title that doesn"t exist', () => {
@@ -131,7 +117,5 @@ describe('Landing Page', () => {
 
         cy.get('[alt="Rogue movie poster"]')
         .should('be.visible')
-    })
-
-    
+    })  
 })

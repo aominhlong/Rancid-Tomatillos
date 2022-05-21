@@ -49,11 +49,9 @@ class App extends Component {
 
   handleChange = (event) => {
     this.setState({ searchBarValue: event.target.value, searchedMovies: this.movies})
-    
     const filteredMovies = this.state.movies.movies.filter(movie => {
-      return movie.title.toUpperCase().includes(event.target.value.toUpperCase())
+      return movie.title.toUpperCase().includes(event.target.value.toUpperCase());
     });
-    
     this.setState({ searchedMovies: {movies: filteredMovies}});
   }
 
