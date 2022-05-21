@@ -35,14 +35,6 @@ describe('Landing Page', () => {
         cy.get('input[placeholder="Search"]')
     })
 
-    it('Should have a genre drop down menu with different genres displayed', () => {
-        cy.get('button').contains('GENRE')
-        cy.get('.dropdown > .nav-btn').trigger('mouseover').get('.dropdown-content').contains('ACTION')
-        cy.get('.dropdown > .nav-btn').trigger('mouseover').get('.dropdown-content').contains('ADVENTURE')
-        cy.get('.dropdown > .nav-btn').trigger('mouseover').get('.dropdown-content').contains('HORROR')
-        cy.get('.dropdown > .nav-btn').trigger('mouseover').get('.dropdown-content').contains('COMEDY')
-    })
-
     it('Should display all movies on when a user first comes to the site', () => {
         cy.get('[alt="Money Plane movie poster"]')
         .should('be.visible')
