@@ -50,7 +50,7 @@ describe('Landing Page', () => {
         .get('.error-msg').should('contain', 'Network Error - status 404')
     })
 
-    it.only('Should load home URL', () => {
+    it('Should load home URL', () => {
         cy.location("host").should('eq', 'localhost:3000')
     })
 
@@ -133,4 +133,5 @@ describe('Landing Page', () => {
         .should('be.visible')
     })
 
+    
 })
