@@ -18,8 +18,6 @@ class App extends Component {
   }
 
   componentDidMount = () => {
-    // fetch('https://httpstat.us/500') 
-    // fetch('https://rancid-tomatillos.herokuapp.com/api/v2/moviesbittermelon') 
     console.log('componentDidMount is working')
     fetch('https://rancid-tomatillos.herokuapp.com/api/v2/movies')
     .then(response => {
@@ -40,7 +38,7 @@ class App extends Component {
 
   loadMovieDetails = (id) => {
     const selectedMovie = this.state.movies.movies.find(movie => movie.id === id);
-    this.setState({ currentMovie: selectedMovie, searchBarValue: ''});
+    this.setState({ currentMovie: selectedMovie, searchBarValue: '' });
   }
 
   goHome = () => {
@@ -48,26 +46,26 @@ class App extends Component {
   }
 
   handleChange = (event) => {
-    this.setState({ searchBarValue: event.target.value, searchedMovies: this.movies})
+    this.setState({ searchBarValue: event.target.value, searchedMovies: this.movies })
     const filteredMovies = this.state.movies.movies.filter(movie => {
       return movie.title.toUpperCase().includes(event.target.value.toUpperCase());
     });
-    this.setState({ searchedMovies: {movies: filteredMovies}});
+    this.setState({ searchedMovies: { movies: filteredMovies }});
   }
 
   render() {
     return(
       <main className='app-main'>
-        <NavBar goHome={this.goHome} handleChange={ this.handleChange } searchBarValue={this.state.searchBarValue}/>
-        <h1>{this.state.error}</h1>
+        <NavBar goHome={ this.goHome } handleChange={ this.handleChange } searchBarValue={ this.state.searchBarValue }/>
+        <h1>{ this.state.error }</h1>
 
         <Switch>
           {/* Load all movies and load searched movies */}
           <Route exact path="/" render={() => {
             if (!Object.keys(this.state.searchedMovies).length) {
-              return <MovieContainer movies={this.state.movies} loadMovieDetails={ this.loadMovieDetails }/> 
+              return <MovieContainer movies={ this.state.movies } loadMovieDetails={ this.loadMovieDetails }/> 
             } else {
-              return <MovieContainer movies={this.state.searchedMovies} loadMovieDetails={ this.loadMovieDetails } />
+              return <MovieContainer movies={ this.state.searchedMovies } loadMovieDetails={ this.loadMovieDetails } />
             }
           }} /> 
 

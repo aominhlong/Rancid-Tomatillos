@@ -13,8 +13,6 @@ class MovieDetailsContainer extends Component {
   }
   
   getMovieResponse = (url) => {
-    // fetch('https://httpstat.us/500') 
-    // fetch('https://rancid-tomatillos.herokuapp.com/api/v2/moviesbittermelon') 
     fetch(url)
     .then(response => {
       if(!response.ok) {
@@ -32,8 +30,6 @@ class MovieDetailsContainer extends Component {
   }
 
   getVideoResponse = (url) => {
-    // fetch('https://httpstat.us/500') 
-    // fetch('https://rancid-tomatillos.herokuapp.com/api/v2/movies/666/videos') 
     fetch(url)
     .then(response => {
       if(!response.ok) {
@@ -59,8 +55,10 @@ class MovieDetailsContainer extends Component {
   render() {
     return (
       <div className='movie-details-container'>
-        <h2 className='error-msg'>{this.state.error}</h2>
-        {Object.keys(this.state.currentMovieDetails).length && Object.keys(this.state.currentMovieVideos).length && <MovieDetails movieDetails={ this.state.currentMovieDetails } movieVideos={ this.state.currentMovieVideos} />}
+        <h2 className='error-msg'>{ this.state.error }</h2>
+        {Object.keys(this.state.currentMovieDetails).length 
+          && Object.keys(this.state.currentMovieVideos).length 
+          && <MovieDetails movieDetails={ this.state.currentMovieDetails } movieVideos={ this.state.currentMovieVideos } />}
       </div>
     )
   }
