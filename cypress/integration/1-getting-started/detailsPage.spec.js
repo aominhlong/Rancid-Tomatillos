@@ -6,65 +6,12 @@ describe('Details view page', () => {
         cy.visit('http://localhost:3000/movie/337401')
     })
 
-    // SAD PATHS for our details page load
-    it('Should display an error message on failed API load for details page - 500', () => {
-      cy.intercept({
-          method: 'GET', 
-          url: 'https://rancid-tomatillos.herokuapp.com/api/v2/movies/337401'
-      },
-      {
-          statusCode: 500,
-          body: {
-              message: `Network Error - status 500 at URL: https://rancid-tomatillos.herokuapp.com/api/v2/movies/337401`
-          }
-      })
-      .get('.error-msg').should('contain', 'Network Error - status 500')
+    
+    it('Should be able to access movie detials data', () => {
+        cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies/337401', { fixture: 'mulanDetails.json' });
+        cy.url().should('eq', 'http://localhost:3000/movie/337401')
     })
 
-    it('Should display an error message on failed API load for details page - 404', () => {
-        cy.intercept({
-            method: 'GET', 
-            url: 'https://rancid-tomatillos.herokuapp.com/api/v2/movies/666'
-
-        },
-        {
-            statusCode: 404,
-            body: {
-                message: `Cannot GET /api/v2/movies/666`
-            }
-        })
-        .get('.error-msg').should('contain', 'Network Error - status 404')
-    })
-
-    // SAD PATHS for our video load
-    it('Should display an error message on failed API load for videos - 500', () => {
-      cy.intercept({
-          method: 'GET', 
-          url: 'https://rancid-tomatillos.herokuapp.com/api/v2/movies/337401/videos'
-      },
-      {
-          statusCode: 500,
-          body: {
-              message: `Network Error - status 500 at URL: https://rancid-tomatillos.herokuapp.com/api/v2/movies/337401/videos`
-          }
-      })
-      .get('.error-msg').should('contain', 'Network Error - status 500')
-    })
-
-    it('Should display an error message on failed API load for details page - 404', () => {
-        cy.intercept({
-            method: 'GET', 
-            url: 'https://rancid-tomatillos.herokuapp.com/api/v2/movies/666/videos'
-
-        },
-        {
-            statusCode: 404,
-            body: {
-                message: `Cannot GET /api/v2/movies/666/videos`
-            }
-        })
-        .get('.error-msg').should('contain', 'Network Error - status 404')
-    })
 
     it.only('Should update the url when clicking on a movie poster', () => {
         cy.url().should('eq', 'http://localhost:3000/movie/337401')
