@@ -5,62 +5,23 @@ describe('Landing Page', () => {
         cy.visit('http://localhost:3000/')
     })
 
-    it.only('Should load specific movie details URL', () => {
+    it('Should load landing page URL', () => {
         cy.url().should('eq', 'http://localhost:3000/')
     })
 
-    it('Should be able to access movie detials data', () => {
-        cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies/337401', { fixture: 'mulanDetails.json' });
-        cy.url().should('eq', 'http://localhost:3000/movie/337401')
-    })
-    // FINISH AFTER ROUTER
-    it.skip('Should load api and return 200 status', () => {
-        cy.intercept({
-            method: 'GET', 
-            url: 'https://rancid-tomatillos.herokuapp.com/api/v2/movies'
-        },
-        {
-            statusCode: 200,
-            body: {
-                message: `Network Error - status 500 at URL: https://rancid-tomatillos.herokuapp.com/api/v2/movies`
-            }
-        })
-        .get('.error-msg').should('contain', 'Network Error - status 500')
-    })
-
-    // SAD PATHS
-    it('Should display an error message on failed API load - 500', () => {
-        cy.intercept({
-            method: 'GET', 
-            url: 'https://rancid-tomatillos.herokuapp.com/api/v2/movies'
-        },
-        {
+    it('Should display error message to a user when the server is down', () => {
+        cy.intercept('https://rancid-tomatillos.herokuapp.com/api/v2/movies', {
             statusCode: 500,
-            body: {
-                message: `Network Error - status 500 at URL: https://rancid-tomatillos.herokuapp.com/api/v2/movies`
-            }
-        })
-        .get('.error-msg').should('contain', 'Network Error - status 500')
-    })
+        });
+        cy.contains('Network Error - status 500');
+    });
 
-    it('Should display an error message on failed API load - 404', () => {
-        cy.intercept({
-            method: 'GET', 
-            url: 'https://rancid-tomatillos.herokuapp.com/api/v2/moviesbittermelon'
-
-        },
-        {
+    it('Should display error message to user when the page is not found', () => {
+        cy.intercept('https://rancid-tomatillos.herokuapp.com/api/v2/movies', {
             statusCode: 404,
-            body: {
-                message: `Cannot GET /api/v2/moviesbittermelon`
-            }
-        })
-        .get('.error-msg').should('contain', 'Network Error - status 404')
-    })
-
-    it('Should load home URL', () => {
-        cy.location("host").should('eq', 'localhost:3000')
-    })
+        });
+        cy.contains('Network Error - status 404');
+    });
 
     it('Should have a title', () => {
         cy.contains('RANCID TOMATILLOS')
