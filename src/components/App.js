@@ -12,7 +12,8 @@ class App extends Component {
         movies: {},
         searchedMovies: {},
         currentMovie: {},
-        error: ''
+        error: '',
+        searchBarValue: ''
       }
   }
 
@@ -43,20 +44,24 @@ class App extends Component {
   }
 
   goHome = () => {
-    this.setState({ currentMovie: {}, searchedMovies: {}, error: '' });
+    this.setState({ currentMovie: {}, searchedMovies: {}, error: '', searchBarValue: '' });
   }
 
   handleChange = (event) => {
     this.setState({ searchedMovies: this.movies })
-    const filteredMovies = this.state.movies.movies.filter(movie => movie.title.toLowerCase().includes(event.target.value.toLowerCase()));
+    this.setState({ searchBarValue: event.target.value})
+    
+    const filteredMovies = this.state.movies.movies.filter(movie => {
+      return movie.title.toUpperCase().includes(event.target.value.toUpperCase())
+    });
+    
     this.setState({ searchedMovies: {movies: filteredMovies}});
-    console.log('movie container', this.state.searchedMovies)
   }
 
   render() {
     return(
       <main className='app-main'>
-        <NavBar goHome={this.goHome} handleChange={ this.handleChange }/>
+        <NavBar goHome={this.goHome} handleChange={ this.handleChange } searchBarValue={this.state.searchBarValue}/>
         <h1>{this.state.error}</h1>
 
         <Switch>
