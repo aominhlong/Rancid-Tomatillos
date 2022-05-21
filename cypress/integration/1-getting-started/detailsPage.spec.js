@@ -26,6 +26,21 @@ describe('Details view page', () => {
         cy.contains('Network Error - status 404');
     });
 
+    // SAD PATHS for our video load
+    it('Should display error message to a user when the movie video server is down', () => {
+        cy.intercept('https://rancid-tomatillos.herokuapp.com/api/v2/movies/337401/videos', {
+            statusCode: 500,
+        });
+        cy.contains('Network Error - status 500');
+        });
+
+    it('should display error message to user when the video is not found', () => {
+        cy.intercept('https://rancid-tomatillos.herokuapp.com/api/v2/movies/337401/videos', {
+            statusCode: 404,
+        });
+        cy.contains('Network Error - status 404');
+    });
+
 
     it.only('Should update the url when clicking on a movie poster', () => {
         cy.url().should('eq', 'http://localhost:3000/movie/337401')
