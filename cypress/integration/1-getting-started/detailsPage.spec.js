@@ -1,8 +1,7 @@
 describe('Details view page', () => {
 
     beforeEach( () => {
-        cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies', { fixture: 'movieData.json' })
-        cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies/337401', { fixture: 'mulanDetails.json' })
+        cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies/337401', { fixture: 'mulanDetails.json' });
         cy.wait(2000)
         cy.visit('http://localhost:3000/movie/337401')
     })
@@ -107,7 +106,6 @@ describe('Details view page', () => {
 
     it('Should return home when home button clicked', () => {
         cy.get('.home-btn').click();
-        cy.url().should('eq', 'http://localhost:3000/') // more precise
-        // cy.url().should('include', 'http://localhost:3000/')
+        cy.url().should('eq', 'http://localhost:3000/') 
     })
 })
