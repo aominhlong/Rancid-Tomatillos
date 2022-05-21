@@ -61,7 +61,7 @@ describe('Landing Page', () => {
         .should('be.visible')
     })  
     
-    it('Should change the movies based on the search input', () => {
+    it.skip('Should change the movies based on the search input', () => {
         cy.get('input[name="search"]').type('M')
 
         cy.get('[alt="Mulan movie poster"]')
@@ -71,11 +71,22 @@ describe('Landing Page', () => {
         .should('be.visible')
     })
 
+    it.only('Should start with a clear nav search bar on page load', () => {
+        cy.get('input[name="search"]').should('have.value', '')
+    })
+
+    it('Should clear nav search bar when movie poster clicked', () => {
+        cy.get('input[name="search"]').type('Mulan')
+
+        cy.get('[alt="Mulan movie poster"]').click()
+
+        cy.get('input[name="search"]').should('have.value', '')
+    })
+
     it('Should only show one movie poster if the search input matches the name', () => {
         cy.get('input[name="search"]').type('Mulan')
 
-        cy.get('[alt="Mulan movie poster"]')
-        .should('be.visible')
+        cy.get('[alt="Mulan movie poster"]').should('be.visible')
     })
 
     it('Should not show any movies if the user searches for a movie title that doesn"t exist', () => {
