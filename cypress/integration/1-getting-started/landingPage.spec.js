@@ -1,10 +1,18 @@
 describe('Landing Page', () => {
-
     beforeEach( () => {
         cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies', { fixture: 'movieData.json' })
+        cy.wait(2000)
         cy.visit('http://localhost:3000/')
     })
 
+    it.only('Should load specific movie details URL', () => {
+        cy.url().should('eq', 'http://localhost:3000/')
+    })
+
+    it('Should be able to access movie detials data', () => {
+        cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies/337401', { fixture: 'mulanDetails.json' });
+        cy.url().should('eq', 'http://localhost:3000/movie/337401')
+    })
     // FINISH AFTER ROUTER
     it.skip('Should load api and return 200 status', () => {
         cy.intercept({
@@ -131,7 +139,5 @@ describe('Landing Page', () => {
 
         cy.get('[alt="Rogue movie poster"]')
         .should('be.visible')
-    })
-
-    
+    })  
 })
