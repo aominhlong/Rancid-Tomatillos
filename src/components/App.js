@@ -1,5 +1,6 @@
-import React, {Component} from 'react';
-import { Route, Switch, NavLink } from 'react-router-dom';
+import React, { Component } from 'react';
+import { Route, Switch } from 'react-router-dom';
+import fetchResponse from '../apiCalls'
 import MovieContainer from './MovieContainer';
 import MovieDetailsContainer from './MovieDetailsContainer';
 import NavBar from './NavBar';
@@ -18,19 +19,7 @@ class App extends Component {
   }
 
   componentDidMount = () => {
-    console.log('componentDidMount is working')
-    fetch('https://httpstat.us/500')
-    .then(response => {
-      if(!response.ok) {
-        console.log('HTTP request unsuccessful');
-        this.setState({error: `Network Error - status ${response.status} at URL: ${response.url}`});
-        throw new Error(`status ${response.status} at URL: ${response.url}`)
-      } else {
-        console.log('HTTP request successful');
-      }
-      return response;
-    })
-    .then(response => response.json())
+    fetchResponse('https://rancid-tomatillos.herokuapp.com/api/v2/movies')
     .then(movies => { 
       return this.setState({ movies: movies })})
     .catch(err => console.log(err));
@@ -57,7 +46,7 @@ class App extends Component {
     return(
       <main className='app-main'>
         <NavBar goHome={ this.goHome } handleChange={ this.handleChange } searchBarValue={ this.state.searchBarValue }/>
-        <h1 className='error-msg'>{ this.state.error }</h1>
+        {/* <h1 className='error-msg'>{ this.state.error }</h1> */}
 
         <Switch>
           <Route exact path="/" render={() => {
@@ -77,5 +66,3 @@ class App extends Component {
 }
 
 export default App;
-
-
