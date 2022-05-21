@@ -11,6 +11,10 @@ describe('Details view page', () => {
         cy.url().should('eq', 'http://localhost:3000/movie/337401')
     })
 
+    it('Should load specific movie details URL', () => {
+        cy.url().should('eq', 'http://localhost:3000/movie/337401')
+    })
+
     // SAD PATHS for our details page load
     it('Should display error message to a user when the server is down', () => {
         cy.intercept('https://rancid-tomatillos.herokuapp.com/api/v2/movies/337401', {
@@ -41,17 +45,13 @@ describe('Details view page', () => {
         cy.contains('Network Error - status 404');
     });
 
-
-    it.only('Should update the url when clicking on a movie poster', () => {
-        cy.url().should('eq', 'http://localhost:3000/movie/337401')
-    })
-
     it('Should see movie title, movie description, and play button in movie player box', () => {
         cy.get('.showcase-content').contains('Mulan')
         cy.get('.showcase-content').contains('When the Emperor of China issues a decree that one man per family must serve in the Imperial Chinese Army to defend the country from Huns')
     })
 
     it('Should be able to play a movie preview', () => {
+        cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies/337401', { fixture: 'mulanMoviePreviews.json' });
         cy.get('.btn').click()
         cy.get('iframe').should('have.attr', 'src').should('include', 'https://www.youtube.com/embed/01ON04GCwKs')
     })
@@ -60,7 +60,7 @@ describe('Details view page', () => {
         cy.get('.details-content').find('img').should('have.attr', 'src').should('include', 'https://image.tmdb.org/t/p/original//aKx1ARwG55zZ0GpRvU2WrGrCG9o.jpg')
     })
 
-    it('Should display a list of movie details', () => { // chain .should
+    it('Should display a list of movie details', () => { 
         cy.get('article')
           .should('contain.text', 'Mulan (2020)')
 
