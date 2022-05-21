@@ -40,7 +40,7 @@ class App extends Component {
 
   loadMovieDetails = (id) => {
     const selectedMovie = this.state.movies.movies.find(movie => movie.id === id);
-    this.setState({ currentMovie: selectedMovie });
+    this.setState({ currentMovie: selectedMovie, searchBarValue: ''});
   }
 
   goHome = () => {
