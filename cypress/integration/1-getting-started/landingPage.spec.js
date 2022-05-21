@@ -61,7 +61,7 @@ describe('Landing Page', () => {
         .should('be.visible')
     })  
     
-    it.skip('Should change the movies based on the search input', () => {
+    it('Should change the movies based on the search input', () => {
         cy.get('input[name="search"]').type('M')
 
         cy.get('[alt="Mulan movie poster"]')

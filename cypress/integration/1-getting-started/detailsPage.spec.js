@@ -42,9 +42,8 @@ describe('Details view page', () => {
         cy.get('.showcase-content').contains('When the Emperor of China issues a decree that one man per family must serve in the Imperial Chinese Army to defend the country from Huns')
     })
 
-    it.skip('Should be able to play a movie preview', () => {
-        cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies/337401', { fixture: 'mulanMoviePreviews.json' });
-        cy.get('.btn').click()
+    it('Should be able to play a movie preview', () => {
+        cy.get('.btn-play').click()
         cy.get('iframe').should('have.attr', 'src').should('include', 'youtube')
     })
 
