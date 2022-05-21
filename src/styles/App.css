@@ -33,3 +33,12 @@ img {
   width: 100%;
 }
 
+.error-msg {
+  width: 200rem;
+  height: 200rem;
+  font-size: 4rem;
+  text-align: center;
+  margin-top: 20rem;
+  background-image: url('https://media2.giphy.com/media/PzbIKDFeivnqM/200.gif');
+}
+

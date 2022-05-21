@@ -19,7 +19,7 @@ class App extends Component {
 
   componentDidMount = () => {
     console.log('componentDidMount is working')
-    fetch('https://rancid-tomatillos.herokuapp.com/api/v2/movies')
+    fetch('https://httpstat.us/500')
     .then(response => {
       if(!response.ok) {
         console.log('HTTP request unsuccessful');
@@ -50,17 +50,16 @@ class App extends Component {
     const filteredMovies = this.state.movies.movies.filter(movie => {
       return movie.title.toUpperCase().includes(event.target.value.toUpperCase());
     });
-    this.setState({ searchedMovies: { movies: filteredMovies }});
+    this.setState({ searchedMovies: { movies: filteredMovies } });
   }
 
   render() {
     return(
       <main className='app-main'>
         <NavBar goHome={ this.goHome } handleChange={ this.handleChange } searchBarValue={ this.state.searchBarValue }/>
-        <h1>{ this.state.error }</h1>
+        <h1 className='error-msg'>{ this.state.error }</h1>
 
         <Switch>
-          {/* Load all movies and load searched movies */}
           <Route exact path="/" render={() => {
             if (!Object.keys(this.state.searchedMovies).length) {
               return <MovieContainer movies={ this.state.movies } loadMovieDetails={ this.loadMovieDetails }/> 
@@ -69,11 +68,9 @@ class App extends Component {
             }
           }} /> 
 
-          {/* Page load on user clicking on a poster */}
           <Route exact path="/movie/:id" render={({ match }) => {
             return <MovieDetailsContainer movieId={ parseInt(match.params.id) } loadMovieDetails={ this.loadMovieDetails } /> } } />
         </Switch>
-
       </main>
     )
   }
