@@ -72,7 +72,7 @@ describe('Details view page', () => {
           .should('contain.text', 'Revenue: $57000000.00')
     })
 
-    it('Should return home when home button clicked', () => {
+    it('Should return home and update URL when home button clicked', () => {
         cy.get('.home-btn').click();
         cy.url().should('eq', 'http://localhost:3000/') 
     })
