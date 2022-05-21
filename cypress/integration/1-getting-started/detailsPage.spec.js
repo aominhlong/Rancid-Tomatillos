@@ -5,39 +5,32 @@ describe('Details view page', () => {
         cy.visit('http://localhost:3000/movie/337401')
     })
 
-    it('Should be able to access movie detials data', () => {
-        cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies/337401', { fixture: 'mulanDetails.json' });
-        cy.url().should('eq', 'http://localhost:3000/movie/337401')
-    })
-
     it('Should load specific movie details URL', () => {
         cy.url().should('eq', 'http://localhost:3000/movie/337401')
     })
 
-    // SAD PATHS for our details page load
     it('Should display error message to a user when the server is down', () => {
         cy.intercept('https://rancid-tomatillos.herokuapp.com/api/v2/movies/337401', {
             statusCode: 500,
         });
         cy.contains('Network Error - status 500');
-        });
+    });
 
-    it('should display error message to user when the page is not found', () => {
+    it('Should display error message to user when the page is not found', () => {
         cy.intercept('https://rancid-tomatillos.herokuapp.com/api/v2/movies/337401', {
             statusCode: 404,
         });
         cy.contains('Network Error - status 404');
     });
 
-    // SAD PATHS for our video load
     it('Should display error message to a user when the movie video server is down', () => {
         cy.intercept('https://rancid-tomatillos.herokuapp.com/api/v2/movies/337401/videos', {
             statusCode: 500,
         });
         cy.contains('Network Error - status 500');
-        });
+    });
 
-    it('should display error message to user when the video is not found', () => {
+    it('Should display error message to user when the video is not found', () => {
         cy.intercept('https://rancid-tomatillos.herokuapp.com/api/v2/movies/337401/videos', {
             statusCode: 404,
         });
