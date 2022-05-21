@@ -71,14 +71,20 @@ describe('Landing Page', () => {
         .should('be.visible')
     })
 
-    it.only('Should start with a clear nav search bar on page load', () => {
+    it('Should start with a clear nav search bar on page load', () => {
         cy.get('input[name="search"]').should('have.value', '')
     })
 
     it('Should clear nav search bar when movie poster clicked', () => {
         cy.get('input[name="search"]').type('Mulan')
-
         cy.get('[alt="Mulan movie poster"]').click()
+
+        cy.get('input[name="search"]').should('have.value', '')
+    })
+
+    it('Should clear nav search bar when home button clicked', () => {
+        cy.get('input[name="search"]').type('Mulan')
+        cy.get('button').contains('HOME').click()
 
         cy.get('input[name="search"]').should('have.value', '')
     })
