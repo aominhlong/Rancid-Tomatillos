@@ -20,9 +20,11 @@ class App extends Component {
 
   componentDidMount = () => {
     fetchResponse('https://rancid-tomatillos.herokuapp.com/api/v2/movies')
-    .then(movies => { 
-      return this.setState({ movies: movies })})
-    .catch(err => console.log(err));
+    .then(movies => this.setState({ movies: movies }))
+    .catch(err => {
+      console.log(err);              
+      this.setState({error: `${err}`})
+    });
   }
 
   loadMovieDetails = (id) => {
@@ -46,8 +48,7 @@ class App extends Component {
     return(
       <main className='app-main'>
         <NavBar goHome={ this.goHome } handleChange={ this.handleChange } searchBarValue={ this.state.searchBarValue }/>
-        {/* <h1 className='error-msg'>{ this.state.error }</h1> */}
-
+        { this.state.error.length && <h1 className='error-msg'>{ this.state.error }</h1> }
         <Switch>
           <Route exact path="/" render={() => {
             if (!Object.keys(this.state.searchedMovies).length) {
@@ -56,7 +57,6 @@ class App extends Component {
               return <MovieContainer movies={ this.state.searchedMovies } loadMovieDetails={ this.loadMovieDetails } />
             }
           }} /> 
-
           <Route exact path="/movie/:id" render={({ match }) => {
             return <MovieDetailsContainer movieId={ parseInt(match.params.id) } loadMovieDetails={ this.loadMovieDetails } /> } } />
         </Switch>

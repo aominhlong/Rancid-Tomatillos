@@ -16,13 +16,19 @@ class MovieDetailsContainer extends Component {
   getMovieResponse = (url) => {
     fetchResponse(url)
     .then(movieDetails => this.setState({ currentMovieDetails: movieDetails }))
-    .catch(err => console.log(err));
+    .catch(err => {
+      console.log(err);              
+      this.setState({error: `${err}`})
+    });
   }
 
   getVideoResponse = (url) => {
     fetchResponse(url)
-    .then(movieDetails => this.setState({ currentMovieVideos: movieDetails }))
-    .catch(err => console.log(err));
+    .then(movieVideos => this.setState({ currentMovieVideos: movieVideos }))
+    .catch(err => {
+      console.log(err);              
+      this.setState({error: `${err}`})
+    });
   }
 
   componentDidMount = () => {
@@ -33,7 +39,7 @@ class MovieDetailsContainer extends Component {
   render() {
     return (
       <div className='movie-details-container'>
-        {/* <h2 className='error-msg'>{ this.state.error }</h2> */}
+        { this.state.error.length && <h1 className='error-msg'>{ this.state.error }</h1> }
         {Object.keys(this.state.currentMovieDetails).length 
           && Object.keys(this.state.currentMovieVideos).length 
           && <MovieDetails movieDetails={ this.state.currentMovieDetails } movieVideos={ this.state.currentMovieVideos } />}
