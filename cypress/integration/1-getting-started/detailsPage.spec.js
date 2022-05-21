@@ -59,20 +59,20 @@ describe('Details view page', () => {
           .should('contain.text', 'Release Date: 2020/09/04')
 
         cy.get('article')
-          .should('contain.text', 'Runtime: 115 minutes')
+          .should('contain.text', 'Runtime: 115 minutes');
 
         cy.get('article')
-          .should('contain.text', 'Genre: Action,Adventure,Drama,Fantasy')
+          .should('contain.text', 'Genre: Action,Adventure,Drama,Fantasy');
 
         cy.get('article')
-          .should('contain.text', 'Budget: $200000000.00')
+          .should('contain.text', 'Budget: $200000000.00');
 
         cy.get('article')
-          .should('contain.text', 'Revenue: $57000000.00')
+          .should('contain.text', 'Revenue: $57000000.00');
     })
 
     it('Should return home and update URL when home button clicked', () => {
         cy.get('.home-btn').click();
-        cy.url().should('eq', 'http://localhost:3000/') 
+        cy.url().should('eq', 'http://localhost:3000/');
     })
 })
