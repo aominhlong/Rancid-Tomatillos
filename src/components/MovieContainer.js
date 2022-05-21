@@ -4,7 +4,6 @@ import '../styles/MovieContainer.css'
 import { NavLink } from 'react-router-dom';
 
 const MovieContainer = ( {movies, loadMovieDetails } ) => {
-
     if (movies.movies === undefined) {
         console.log('hello') // put loading movies
     } else {

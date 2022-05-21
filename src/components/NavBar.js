@@ -2,7 +2,13 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import '../styles/NavBar.css'
 
-const NavBar = ({ goHome, handleChange }) => {
+const NavBar = ({ goHome, handleChange, searchBarValue }) => {
+
+    const [textInput, setTextInput] = React.useState("")
+    // attempt
+
+
+    //
     return(
         <nav aria-description='Navigation container with site name and navigation options'>
             <ul className='nav-selection'>
@@ -27,7 +33,7 @@ const NavBar = ({ goHome, handleChange }) => {
                 </li>
                 <li aria-setsize='4' aria-posinset='4'>
                         <form>
-                            <input name='search' type='text' placeholder='Search' onChange={event => handleChange(event)}></input>
+                            <input name='search' type='text' placeholder='Search' value={searchBarValue} onChange={event => handleChange(event)}></input>
                         </form>
                 </li>
             </ul>

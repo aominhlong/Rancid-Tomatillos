@@ -35,7 +35,7 @@ describe('Landing Page', () => {
         .get('.error-msg').should('contain', 'Network Error - status 500')
     })
 
-    it.only('Should display an error message on failed API load - 404', () => {
+    it('Should display an error message on failed API load - 404', () => {
         cy.intercept({
             method: 'GET', 
             url: 'https://rancid-tomatillos.herokuapp.com/api/v2/moviesbittermelon'
@@ -48,6 +48,10 @@ describe('Landing Page', () => {
             }
         })
         .get('.error-msg').should('contain', 'Network Error - status 404')
+    })
+
+    it('Should load home URL', () => {
+        cy.location("host").should('eq', 'localhost:3000')
     })
 
     it('Should have a title', () => {
@@ -129,4 +133,5 @@ describe('Landing Page', () => {
         .should('be.visible')
     })
 
+    
 })
