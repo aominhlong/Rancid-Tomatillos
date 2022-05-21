@@ -12,28 +12,20 @@ class MovieDetailsContainer extends Component {
       error: ''
     }
   }
-  
-  getMovieResponse = (url) => {
-    fetchResponse(url)
-    .then(movieDetails => this.setState({ currentMovieDetails: movieDetails }))
-    .catch(err => {
-      console.log(err);              
-      this.setState({error: `${err}`})
-    });
-  }
-
-  getVideoResponse = (url) => {
-    fetchResponse(url)
-    .then(movieVideos => this.setState({ currentMovieVideos: movieVideos }))
-    .catch(err => {
-      console.log(err);              
-      this.setState({error: `${err}`})
-    });
-  }
 
   componentDidMount = () => {
-    this.getMovieResponse(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${this.props.movieId}`)
-    this.getVideoResponse(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${this.props.movieId}/videos`)
+    const movieDetails = fetchResponse(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${this.props.movieId}`);
+    const videos = fetchResponse(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${this.props.movieId}/videos`);
+
+    Promise.all([movieDetails, videos])
+    .then((movieData) => {
+      this.setState({ currentMovieDetails: movieData[0] });
+      this.setState({ currentMovieVideos: movieData[1] });
+    })
+    .catch(err => {
+      console.log(err);              
+      this.setState({error: `${err}`})
+    });
   }
 
   render() {
