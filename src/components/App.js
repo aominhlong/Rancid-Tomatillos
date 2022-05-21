@@ -23,7 +23,7 @@ class App extends Component {
     .then(movies => this.setState({ movies: movies }))
     .catch(err => {
       console.log(err);              
-      this.setState({error: `${err}`})
+      this.setState({error: `${err}`});
     });
   }
 
@@ -37,7 +37,7 @@ class App extends Component {
   }
 
   handleChange = (event) => {
-    this.setState({ searchBarValue: event.target.value, searchedMovies: this.movies })
+    this.setState({ searchBarValue: event.target.value, searchedMovies: this.movies });
     const filteredMovies = this.state.movies.movies.filter(movie => {
       return movie.title.toUpperCase().includes(event.target.value.toUpperCase());
     });
