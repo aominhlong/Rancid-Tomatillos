@@ -3,8 +3,8 @@ describe('Details view page', () => {
     beforeEach( () => {
         cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies', { fixture: 'movieData.json' })
         cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies/337401', { fixture: 'mulanDetails.json' })
-        cy.visit('http://localhost:3000/movie/337401')
         cy.wait(2000)
+        cy.visit('http://localhost:3000/movie/337401')
     })
 
     // SAD PATHS for our details page load
@@ -65,6 +65,10 @@ describe('Details view page', () => {
             }
         })
         .get('.error-msg').should('contain', 'Network Error - status 404')
+    })
+
+    it.only('Should update the url when clicking on a movie poster', () => {
+        cy.url().should('eq', 'http://localhost:3000/movie/337401')
     })
 
     it('Should see movie title, movie description, and play button in movie player box', () => {
