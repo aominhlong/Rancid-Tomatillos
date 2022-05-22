@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import '../styles/NavBar.css'
+import '../styles/NavBar.css';
 
 const NavBar = ({ goHome, handleChange, searchBarValue }) => {
     return(
