@@ -4,7 +4,7 @@
 
 #### Full Demo
 
-![full_demo](https://user-images.githubusercontent.com/97044701/168508159-faf3a730-cdd0-4fe6-856f-2fc09666d2d4.gif)
+![Full Demo](https://user-images.githubusercontent.com/89413678/169679208-971d8f57-81c1-49fb-8a3d-bfb6bd46861e.gif)
 
 #### Getting Started
 1. Clone the repo from [github](https://github.com/aominhlong/Rancid-Tomatillos)
@@ -68,15 +68,19 @@ To play a movie trailer, the user can click on a movie poster on the homepage an
 #### Demo of Features
 1. **Homepage**
 
-![home_view](https://user-images.githubusercontent.com/97044701/168508425-62b8e5f5-333d-48c4-8eb6-cf40c0329ad2.gif)
+![Homepage](https://user-images.githubusercontent.com/89413678/169678514-08800962-ac09-4f1f-925b-9ff47c6156d3.gif)
 
 2. **Search for a Specific Movie**
 
-![search_functionality](https://user-images.githubusercontent.com/97044701/168508098-8df7afd8-e48e-4cde-9e29-48eb3fd38f13.gif)
+![Search Movie](https://user-images.githubusercontent.com/89413678/169679198-5af2dba8-6f3e-469a-8f1b-df73240bbf10.gif)
 
 3. **View Movie Details**
 
-![movie_details](https://user-images.githubusercontent.com/97044701/168508218-9e40ff41-092f-4c9d-b4af-e4376c06cbe0.gif)
+![View Movie Details](https://user-images.githubusercontent.com/89413678/169678863-739a151c-b7cb-4370-a429-8dd9eef287b9.gif)
+
+4. **Play the Movie Trailer**
+
+![Movie Trailer](https://user-images.githubusercontent.com/89413678/169679569-337a0798-86ea-4e1a-9a0e-a4bab21b83e1.gif)
 
 #### Testing the App
 `End-to-end` testing was implimented to test the application by using Cypress. `Stubbing` and `intercepting` was used to control the network response. The app was fully tested based on the user story from start to finish. 
