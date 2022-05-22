@@ -51,8 +51,10 @@ class App extends Component {
         { this.state.error.length && <h1 className='error-msg'>{ this.state.error }</h1> }
         <Switch>
           <Route exact path="/" render={() => {
-            if (!Object.keys(this.state.searchedMovies).length) {
+            if (!this.state.searchedMovies.length && !this.state.searchBarValue) {
               return <MovieContainer movies={ this.state.movies } loadMovieDetails={ this.loadMovieDetails }/> 
+            } else if(!this.state.searchedMovies.length) {
+              return <h1 className='error-msg'>{`Sorry, ${this.state.searchBarValue} is not an available movie.`}</h1>
             } else {
               return <MovieContainer movies={ this.state.searchedMovies } loadMovieDetails={ this.loadMovieDetails } />
             }
