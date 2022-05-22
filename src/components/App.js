@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import fetchResponse from '../apiCalls'
+import fetchResponse from '../apiCalls';
 import MovieContainer from './MovieContainer';
 import MovieDetailsContainer from './MovieDetailsContainer';
 import NavBar from './NavBar';
