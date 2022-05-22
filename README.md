@@ -63,7 +63,7 @@ To view a movie's specific detail, users can click on a specific movie of their 
 To go to the homepage, users can click on the `HOME` button located at the top-right of the screen in the navigation bar. 
 
 **_Play the Movie Trailer_**
-To play a movie trailer, the user can click on a movie poster on the homepage and then click the play icon on the video.
+To play a movie trailer, the user can click on a movie poster on the homepage and then click the play icon located on the bottom left of the back-drop image to play the movie trailer.
 
 #### Demo of Features
 1. **Homepage**
