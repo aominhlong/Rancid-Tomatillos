@@ -24,6 +24,7 @@
 - [Technologies Used](#technologies-used)
 - [Instructions on Use](#instructions-on-use)
 - [Demo of Features](#demo-of-features)
+- [Testing the app](#testing-the-app)
 - [Challenges and Wins](#challenges-and-wins)
 - [Project Overview and Goals](#project-overview-and-goals)
 - [Future Additions](#future-additions)
@@ -77,6 +78,8 @@ To play a movie trailer, the user can click on a movie poster on the homepage an
 
 ![movie_details](https://user-images.githubusercontent.com/97044701/168508218-9e40ff41-092f-4c9d-b4af-e4376c06cbe0.gif)
 
+#### Testing the App
+`End-to-end` testing was implimented to test the application by using Cypress. `Stubbing` and `intercepting` was used to control the network response. The app was fully tested based on the user story from start to finish. 
 
 #### Challenges and Wins
 
