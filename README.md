@@ -4,7 +4,7 @@
 
 #### Full Demo
 
-![full_demo](https://user-images.githubusercontent.com/97044701/168508159-faf3a730-cdd0-4fe6-856f-2fc09666d2d4.gif)
+![Full Demo](https://user-images.githubusercontent.com/89413678/169679208-971d8f57-81c1-49fb-8a3d-bfb6bd46861e.gif)
 
 #### Getting Started
 1. Clone the repo from [github](https://github.com/aominhlong/Rancid-Tomatillos)
@@ -24,6 +24,7 @@
 - [Technologies Used](#technologies-used)
 - [Instructions on Use](#instructions-on-use)
 - [Demo of Features](#demo-of-features)
+- [Testing the app](#testing-the-app)
 - [Challenges and Wins](#challenges-and-wins)
 - [Project Overview and Goals](#project-overview-and-goals)
 - [Future Additions](#future-additions)
@@ -47,6 +48,7 @@ This was part of Turing School of Software & Design module 3 project.
 - Webkit
 - React Router for client-side routing
 - [react-player npm package](https://www.npmjs.com/package/react-player)
+- Cypress 
 
 #### Instructions on Use
 Type in the name of anything, ideally a verb or noun, and then hit 'submit'. Users should see a card appear with the text the user input and three facts about it. That's it! 
@@ -61,21 +63,27 @@ To view a movie's specific detail, users can click on a specific movie of their 
 To go to the homepage, users can click on the `HOME` button located at the top-right of the screen in the navigation bar. 
 
 **_Play the Movie Trailer_**
-To play a movie trailer, the user can click on a movie poster on the homepage and then click the play icon on the video.
+To play a movie trailer, the user can click on a movie poster on the homepage and then click the play icon located on the bottom left of the back-drop image to play the movie trailer.
 
 #### Demo of Features
 1. **Homepage**
 
-![home_view](https://user-images.githubusercontent.com/97044701/168508425-62b8e5f5-333d-48c4-8eb6-cf40c0329ad2.gif)
+![Homepage](https://user-images.githubusercontent.com/89413678/169678514-08800962-ac09-4f1f-925b-9ff47c6156d3.gif)
 
 2. **Search for a Specific Movie**
 
-![search_functionality](https://user-images.githubusercontent.com/97044701/168508098-8df7afd8-e48e-4cde-9e29-48eb3fd38f13.gif)
+![Search Movie](https://user-images.githubusercontent.com/89413678/169679198-5af2dba8-6f3e-469a-8f1b-df73240bbf10.gif)
 
 3. **View Movie Details**
 
-![movie_details](https://user-images.githubusercontent.com/97044701/168508218-9e40ff41-092f-4c9d-b4af-e4376c06cbe0.gif)
+![View Movie Details](https://user-images.githubusercontent.com/89413678/169678863-739a151c-b7cb-4370-a429-8dd9eef287b9.gif)
 
+4. **Play the Movie Trailer**
+
+![Movie Trailer](https://user-images.githubusercontent.com/89413678/169679569-337a0798-86ea-4e1a-9a0e-a4bab21b83e1.gif)
+
+#### Testing the App
+`End-to-end` testing was implimented to test the application by using Cypress. `Stubbing` and `intercepting` was used to control the network response. The app was fully tested based on the user story from start to finish. 
 
 #### Challenges and Wins
 
@@ -95,3 +103,4 @@ To play a movie trailer, the user can click on a movie poster on the homepage an
 - Filter by genre
 - Add browse genre carousel page
 - A sample video from the movie should be played on the movie details page by clicking the grey play icon.
+- Add a genre drop down menu where users can filter out movies based on their genre (using Express could help with this addition)
