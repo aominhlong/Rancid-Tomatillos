@@ -47,6 +47,7 @@ This was part of Turing School of Software & Design module 3 project.
 - Webkit
 - React Router for client-side routing
 - [react-player npm package](https://www.npmjs.com/package/react-player)
+- Cypress 
 
 #### Instructions on Use
 Type in the name of anything, ideally a verb or noun, and then hit 'submit'. Users should see a card appear with the text the user input and three facts about it. That's it! 
