@@ -1,11 +1,11 @@
 import React from 'react';
 import Movie from './Movie';
-import '../styles/MovieContainer.css';
 import { NavLink } from 'react-router-dom';
+import '../styles/MovieContainer.css';
 
 const MovieContainer = ({ movies, loadMovieDetails }) => {
-    if (movies.movies) {
-        const movieCards = movies.movies.map(movie => {
+    if (movies) {
+        const movieCards = movies.map(movie => {
             return (
                 <NavLink to={`/movie/${movie.id}`} key={ movie.id }>
                     <Movie 

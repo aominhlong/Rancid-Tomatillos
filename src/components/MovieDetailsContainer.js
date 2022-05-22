@@ -1,17 +1,20 @@
-import '../styles/MovieDetailsContainer.css';
 import React, { Component } from 'react';
 import fetchResponse from '../apiCalls';
 import MovieDetails from './MovieDetails';
+import '../styles/MovieDetailsContainer.css';
 
 class MovieDetailsContainer extends Component {
   constructor() {
     super()
     this.state = {
-      currentMovieDetails: {},
-      currentMovieVideos: {},
+      currentMovieDetails: [],
+      currentMovieVideoKey: '',
       error: ''
     }
   }
+
+  // https://rancid-tomatillos.herokuapp.com/api/v2/movies/337401/videos
+  // https://rancid-tomatillos.herokuapp.com/api/v2/movies/337401
 
   componentDidMount = () => {
     const movieDetails = fetchResponse(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${this.props.movieId}`);
@@ -19,12 +22,12 @@ class MovieDetailsContainer extends Component {
 
     Promise.all([movieDetails, videos])
     .then((movieData) => {
-      this.setState({ currentMovieDetails: movieData[0] });
-      this.setState({ currentMovieVideos: movieData[1] });
+      this.setState({ currentMovieDetails: movieData[0].movie });
+      this.setState({ currentMovieVideoKey: movieData[1].videos[0].key });
     })
     .catch(err => {
       console.log(err);              
-      this.setState({error: `${err}`});
+      this.setState({error: `${err}. Things don't seem to be working out right now, try again later!`});
     });
   }
 
@@ -33,8 +36,8 @@ class MovieDetailsContainer extends Component {
       <div className='movie-details-container'>
         { this.state.error.length && <h1 className='error-msg'>{ this.state.error }</h1> }
         {Object.keys(this.state.currentMovieDetails).length 
-          && Object.keys(this.state.currentMovieVideos).length 
-          && <MovieDetails movieDetails={ this.state.currentMovieDetails } movieVideos={ this.state.currentMovieVideos } />}
+          && this.state.currentMovieVideoKey 
+          && <MovieDetails movieDetails={ this.state.currentMovieDetails } movieVideoKey={ this.state.currentMovieVideoKey } />}
       </div>
     )
   }

@@ -34,11 +34,16 @@ img {
 }
 
 .error-msg {
-  width: 200rem;
-  height: 200rem;
-  font-size: 4rem;
+  margin: auto;
+  padding: 2rem;
+  width: 100rem;
+  height: 50rem;
+  font-size: 3rem;
   text-align: center;
-  margin-top: 20rem;
+  margin-top: 10rem;
   background-image: url('https://media2.giphy.com/media/PzbIKDFeivnqM/200.gif');
+  background: 'no-repeat';
+  background-size: cover;
+  background-position: center center;
 }
 
