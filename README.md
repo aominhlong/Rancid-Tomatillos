@@ -99,3 +99,4 @@ To play a movie trailer, the user can click on a movie poster on the homepage an
 - Filter by genre
 - Add browse genre carousel page
 - A sample video from the movie should be played on the movie details page by clicking the grey play icon.
+- Add a genre drop down menu where users can filter out movies based on their genre (using Express could help with this addition)
