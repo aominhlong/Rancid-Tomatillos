@@ -1,6 +1,6 @@
 import '../styles/MovieDetailsContainer.css';
 import React, { Component } from 'react';
-import fetchResponse from '../apiCalls'
+import fetchResponse from '../apiCalls';
 import MovieDetails from './MovieDetails';
 
 class MovieDetailsContainer extends Component {
@@ -24,7 +24,7 @@ class MovieDetailsContainer extends Component {
     })
     .catch(err => {
       console.log(err);              
-      this.setState({error: `${err}`})
+      this.setState({error: `${err}`});
     });
   }
 
