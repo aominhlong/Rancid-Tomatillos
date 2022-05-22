@@ -1,6 +1,6 @@
 import React from 'react';
 import Movie from './Movie';
-import '../styles/MovieContainer.css'
+import '../styles/MovieContainer.css';
 import { NavLink } from 'react-router-dom';
 
 const MovieContainer = ({ movies, loadMovieDetails }) => {
