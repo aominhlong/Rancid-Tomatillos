@@ -10,9 +10,9 @@ class App extends Component {
   constructor() {
       super()
       this.state = {
-        movies: {},
-        searchedMovies: {},
-        currentMovie: {},
+        movies: [],
+        searchedMovies: [],
+        currentMovie: [],
         error: '',
         searchBarValue: ''
       }
@@ -20,28 +20,28 @@ class App extends Component {
 
   componentDidMount = () => {
     fetchResponse('https://rancid-tomatillos.herokuapp.com/api/v2/movies')
-    .then(movies => this.setState({ movies: movies }))
+    .then(movies => {this.setState({ movies: movies.movies })})
     .catch(err => {
       console.log(err);              
-      this.setState({error: `${err}`});
+      this.setState({error: `${err}. Things don't seem to be working out right now, try again later!`});
     });
   }
 
   loadMovieDetails = (id) => {
-    const selectedMovie = this.state.movies.movies.find(movie => movie.id === id);
+    const selectedMovie = this.state.movies.find(movie => movie.id === id);
     this.setState({ currentMovie: selectedMovie, searchBarValue: '' });
   }
 
   goHome = () => {
-    this.setState({ currentMovie: {}, searchedMovies: {}, error: '', searchBarValue: '' });
+    this.setState({ currentMovie: [], searchedMovies: [], error: '', searchBarValue: '' });
   }
 
   handleChange = (event) => {
     this.setState({ searchBarValue: event.target.value, searchedMovies: this.movies });
-    const filteredMovies = this.state.movies.movies.filter(movie => {
+    const filteredMovies = this.state.movies.filter(movie => {
       return movie.title.toUpperCase().includes(event.target.value.toUpperCase());
     });
-    this.setState({ searchedMovies: { movies: filteredMovies } });
+    this.setState({ searchedMovies: filteredMovies });
   }
 
   render() {
@@ -51,8 +51,10 @@ class App extends Component {
         { this.state.error.length && <h1 className='error-msg'>{ this.state.error }</h1> }
         <Switch>
           <Route exact path="/" render={() => {
-            if (!Object.keys(this.state.searchedMovies).length) {
+            if (!this.state.searchedMovies.length && !this.state.searchBarValue) {
               return <MovieContainer movies={ this.state.movies } loadMovieDetails={ this.loadMovieDetails }/> 
+            } else if(!this.state.searchedMovies.length) {
+              return <h1 className='error-msg'>{`Sorry, ${this.state.searchBarValue} is not an available movie.`}</h1>
             } else {
               return <MovieContainer movies={ this.state.searchedMovies } loadMovieDetails={ this.loadMovieDetails } />
             }

@@ -2,12 +2,10 @@ import React, { useState } from 'react';
 import ReactPlayer from 'react-player';
 import '../styles/MovieDetails.css';
 
-const MovieDetails = (props) => {
+const MovieDetails = ({ movieDetails, movieVideoKey}) => {
     const { title, poster_path, backdrop_path, release_date, 
             overview, average_rating, genres, budget, revenue, 
-            runtime, tagline } = props.movieDetails.movie;
-    const movieVideos = props.movieVideos.videos;
-    
+            runtime, tagline } = movieDetails;
     const [hiddenStatus, setHiddenStatus] = useState(true);
     const [backdropStatus, setBackdropStatus] = useState(false);
     const [playingStatus, setPlayingStatus] = useState(false);
@@ -18,7 +16,7 @@ const MovieDetails = (props) => {
                 <div className="backdrop">
                     <section className="showcase-content" style={{ backgroundImage: `url(${backdrop_path})` }}>
                         <div hidden={ hiddenStatus }>
-                            <ReactPlayer url={`https://www.youtube.com/watch?v=${movieVideos[0].key}&autoplay=1&mute=1`}
+                            <ReactPlayer url={`https://www.youtube.com/watch?v=${movieVideoKey}&autoplay=1&mute=1`}
                             width='1100px'
                             height='500px' 
                             playing={ playingStatus }/>
