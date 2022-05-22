@@ -13,9 +13,6 @@ class MovieDetailsContainer extends Component {
     }
   }
 
-  // https://rancid-tomatillos.herokuapp.com/api/v2/movies/337401/videos
-  // https://rancid-tomatillos.herokuapp.com/api/v2/movies/337401
-
   componentDidMount = () => {
     const movieDetails = fetchResponse(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${this.props.movieId}`);
     const videos = fetchResponse(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${this.props.movieId}/videos`);
