@@ -31,8 +31,8 @@ class MovieDetailsContainer extends Component {
   render() {
     return (
       <div className='movie-details-container'>
-        { this.state.error.length && <h1 className='error-msg'>{ this.state.error }</h1> }
-        {Object.keys(this.state.currentMovieDetails).length 
+        { !!this.state.error.length && <h1 className='error-msg'>{ this.state.error }</h1> }
+        { !!Object.keys(this.state.currentMovieDetails).length 
           && this.state.currentMovieVideoKey 
           && <MovieDetails movieDetails={ this.state.currentMovieDetails } movieVideoKey={ this.state.currentMovieVideoKey } />}
       </div>

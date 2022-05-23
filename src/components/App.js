@@ -48,7 +48,7 @@ class App extends Component {
     return(
       <main className='app-main'>
         <NavBar goHome={ this.goHome } handleChange={ this.handleChange } searchBarValue={ this.state.searchBarValue }/>
-        { this.state.error.length && <h1 className='error-msg'>{ this.state.error }</h1> }
+        { !!this.state.error.length && <h1 className='error-msg'>{ this.state.error }</h1> }
         <Switch>
           <Route exact path="/" render={() => {
             if (!this.state.searchedMovies.length && !this.state.searchBarValue) {
