@@ -7,7 +7,7 @@
 ![Full Demo](https://user-images.githubusercontent.com/89413678/169679208-971d8f57-81c1-49fb-8a3d-bfb6bd46861e.gif)
 
 #### Deployable
-![Visit Rancid Tomatillos](https://rancid-tomtatillos.herokuapp.com/)
+[Visit Rancid Tomatillos](https://rancid-tomtatillos.herokuapp.com/)
 
 #### Getting Started
 1. Clone the repo from [github](https://github.com/aominhlong/Rancid-Tomatillos)
