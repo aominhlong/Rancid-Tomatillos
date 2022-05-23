@@ -36,30 +36,30 @@ describe('Landing Page', () => {
     })
 
     it('Should display all movies on when a user first comes to the site', () => {
-        cy.get('[alt="Money Plane movie poster"]')
+        cy.get('[alt="Money Plane movie poster."]')
         .should('be.visible');
         
-        cy.get('[alt="Mulan movie poster"]')
+        cy.get('[alt="Mulan movie poster."]')
         .should('be.visible');
 
-        cy.get('[alt="Rogue movie poster"]')
+        cy.get('[alt="Rogue movie poster."]')
         .should('be.visible');
     })
 
     it('Should be able to input a text and display a movie poster', () => {
         cy.get('input[name="search"]').type('Rogue');
 
-        cy.get('[alt="Rogue movie poster"]')
+        cy.get('[alt="Rogue movie poster."]')
         .should('be.visible');
     })  
     
     it('Should change the movies based on the search input', () => {
         cy.get('input[name="search"]').type('M');
 
-        cy.get('[alt="Mulan movie poster"]')
+        cy.get('[alt="Mulan movie poster."]')
         .should('be.visible');
 
-        cy.get('[alt="Money Plane movie poster"]')
+        cy.get('[alt="Money Plane movie poster."]')
         .should('be.visible');
     })
 
@@ -69,7 +69,7 @@ describe('Landing Page', () => {
 
     it('Should clear nav search bar when movie poster clicked', () => {
         cy.get('input[name="search"]').type('Mulan');
-        cy.get('[alt="Mulan movie poster"]').click();
+        cy.get('[alt="Mulan movie poster."]').click();
         cy.get('input[name="search"]').should('have.value', '');
     })
 
@@ -81,30 +81,29 @@ describe('Landing Page', () => {
 
     it('Should only show one movie poster if the search input matches the name', () => {
         cy.get('input[name="search"]').type('Mulan');
-        cy.get('[alt="Mulan movie poster"]').should('be.visible');
+        cy.get('[alt="Mulan movie poster."]').should('be.visible');
     })
 
     it('Should display an error message for non-existant search result', () => {
         cy.get('input[name="search"]').type('The Great Bagel');
-        cy.get('div[class="movie-container"]').children().should('have.length', 0);
         cy.contains('Sorry, The Great Bagel is not an available movie.');
     })
     
     it('Should redisplay all movies when a user clicks home', () => {
         cy.get('input[name="search"]').type('Mulan');
 
-        cy.get('[alt="Mulan movie poster"]')
+        cy.get('[alt="Mulan movie poster."]')
         .should('be.visible');
 
         cy.get('button').contains('HOME').click();
 
-        cy.get('[alt="Money Plane movie poster"]')
+        cy.get('[alt="Money Plane movie poster."]')
         .should('be.visible');
         
-        cy.get('[alt="Mulan movie poster"]')
+        cy.get('[alt="Mulan movie poster."]')
         .should('be.visible');
 
-        cy.get('[alt="Rogue movie poster"]')
+        cy.get('[alt="Rogue movie poster."]')
         .should('be.visible');
     })  
 })
