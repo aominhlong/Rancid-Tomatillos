@@ -1,10 +1,12 @@
 # Rancid Tomatillos
-<img width="554" alt="logo" src="https://user-images.githubusercontent.com/97044701/168508486-a84354b0-e7bb-413e-942c-e0b8de6abc52.png">
- 
+![rancid](https://user-images.githubusercontent.com/97044701/169726343-2ad8586f-f9b5-4f5e-b0cc-a1b6eaa3c85d.gif)
 
 #### Full Demo
 
 ![Full Demo](https://user-images.githubusercontent.com/89413678/169679208-971d8f57-81c1-49fb-8a3d-bfb6bd46861e.gif)
+
+#### Deployable
+### [Visit Rancid Tomatillos](https://rancid-tomtatillos.herokuapp.com/)
 
 #### Getting Started
 1. Clone the repo from [github](https://github.com/aominhlong/Rancid-Tomatillos)
