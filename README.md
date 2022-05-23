@@ -1,6 +1,5 @@
 # Rancid Tomatillos
-<img width="554" alt="logo" src="https://user-images.githubusercontent.com/97044701/168508486-a84354b0-e7bb-413e-942c-e0b8de6abc52.png">
- 
+![rancid](https://user-images.githubusercontent.com/97044701/169726343-2ad8586f-f9b5-4f5e-b0cc-a1b6eaa3c85d.gif)
 
 #### Full Demo
 
