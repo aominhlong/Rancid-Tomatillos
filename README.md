@@ -53,7 +53,6 @@ This was part of Turing School of Software & Design module 3 project.
 - [react-player npm package](https://www.npmjs.com/package/react-player)
 
 #### Instructions on Use
-Type in the name of anything, ideally a verb or noun, and then hit 'submit'. Users should see a card appear with the text the user input and three facts about it. That's it! 
 
 **_Search for a Specific Movie_**
 To search for a specific movie, users can click in the input field and type in keywords or a title of the movie. The movies on the homepage will change based on the user's input. 
