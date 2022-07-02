@@ -2,7 +2,7 @@ describe('Details view page', () => {
     beforeEach( () => {
         cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies/337401', { fixture: 'mulanDetails.json' });
         cy.wait(2000);
-        cy.visit('http://localhost:3000/movie/337401');
+        cy.visit('http://localhost:3000/movie/337401',{timeout: 5000});
     })
 
     it('Should load specific movie details URL', () => {
