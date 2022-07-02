@@ -13,6 +13,7 @@ describe('Details view page', () => {
         cy.intercept('https://rancid-tomatillos.herokuapp.com/api/v2/movies/337401', {
             statusCode: 500,
         });
+        cy.wait(4000)
         cy.contains('Network Error - status 500');
     });
 
@@ -20,6 +21,7 @@ describe('Details view page', () => {
         cy.intercept('https://rancid-tomatillos.herokuapp.com/api/v2/movies/337401', {
             statusCode: 404,
         });
+        cy.wait(4000)
         cy.contains('Network Error - status 404');
     });
 
@@ -27,6 +29,7 @@ describe('Details view page', () => {
         cy.intercept('https://rancid-tomatillos.herokuapp.com/api/v2/movies/337401/videos', {
             statusCode: 500,
         });
+        cy.wait(4000)
         cy.contains('Network Error - status 500');
     });
 
@@ -34,6 +37,7 @@ describe('Details view page', () => {
         cy.intercept('https://rancid-tomatillos.herokuapp.com/api/v2/movies/337401/videos', {
             statusCode: 404,
         });
+        cy.wait(4000)
         cy.contains('Network Error - status 404');
     });
 
