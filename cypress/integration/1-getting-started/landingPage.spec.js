@@ -1,6 +1,6 @@
 describe('Landing Page', () => {
     beforeEach( () => {
-        cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies', { fixture: 'movieData.json' });
+        cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies', { fixture: 'MovieData' });
         cy.wait(2000);
         cy.visit('http://localhost:3000/',{timeout: 5000});
     })
