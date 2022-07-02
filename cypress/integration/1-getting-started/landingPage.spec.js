@@ -13,6 +13,7 @@ describe('Landing Page', () => {
         cy.intercept('https://rancid-tomatillos.herokuapp.com/api/v2/movies', {
             statusCode: 500,
         });
+        cy.wait(8000)
         cy.contains('Network Error - status 500');
     });
 
@@ -20,6 +21,7 @@ describe('Landing Page', () => {
         cy.intercept('https://rancid-tomatillos.herokuapp.com/api/v2/movies', {
             statusCode: 404,
         });
+        cy.wait(4000)
         cy.contains('Network Error - status 404');
     });
 
