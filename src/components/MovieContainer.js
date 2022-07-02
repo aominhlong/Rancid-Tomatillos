@@ -10,7 +10,7 @@ const MovieContainer = ({ movies, loadMovieDetails }) => {
                 <NavLink to={`/movie/${movie.id}`} key={ movie.id }>
                     <Movie 
                         id={ movie.id }
-                        key={ movie.id }
+                        // key={ movie.id }
                         poster_path={ movie.poster_path }
                         backdrop_path={ movie.backdrop_path }
                         title={ movie.title }
