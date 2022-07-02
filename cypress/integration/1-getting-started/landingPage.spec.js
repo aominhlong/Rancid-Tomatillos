@@ -2,7 +2,7 @@ describe('Landing Page', () => {
     beforeEach( () => {
         cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies', { fixture: 'movieData.json' });
         cy.wait(2000);
-        cy.visit('http://localhost:3000/');
+        cy.visit('http://localhost:3000/',{timeout: 5000});
     })
 
     it('Should load landing page URL', () => {
