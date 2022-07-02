@@ -45,14 +45,18 @@ This was part of Turing School of Software & Design module 3 project.
 - Javascript
 - HTML
 - CSS
-- Fetch API
+- restful APIs
 - WAI-ARIA 
 - Webkit
 - React Router for client-side routing
+- Cypress End-to-End Testing
 - [react-player npm package](https://www.npmjs.com/package/react-player)
-- Cypress 
 
 #### Instructions on Use
+<<<<<<< HEAD
+=======
+
+>>>>>>> 06e5036d58964406aff2fe591094cc2377758495
 **_Search for a Specific Movie_**
 To search for a specific movie, users can click in the input field and type in keywords or a title of the movie. The movies on the homepage will change based on the user's input. 
 
